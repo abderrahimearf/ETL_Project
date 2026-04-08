@@ -1,0 +1,87 @@
+[2026-04-06T13:10:58.766+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-06T13:10:58.875+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.dbt_tests manual__2026-04-06T12:06:17.406679+00:00 [queued]>
+[2026-04-06T13:10:58.890+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.dbt_tests manual__2026-04-06T12:06:17.406679+00:00 [queued]>
+[2026-04-06T13:10:58.891+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2026-04-06T13:10:58.917+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_tests> on 2026-04-06 12:06:17.406679+00:00
+[2026-04-06T13:10:58.931+0000] {standard_task_runner.py:64} INFO - Started process 955 to run task
+[2026-04-06T13:10:58.938+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline', 'dbt_tests', 'manual__2026-04-06T12:06:17.406679+00:00', '--job-id', '95', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpttzdvkb3']
+[2026-04-06T13:10:58.947+0000] {standard_task_runner.py:91} INFO - Job 95: Subtask dbt_tests
+[2026-04-06T13:10:59.292+0000] {task_command.py:426} INFO - Running <TaskInstance: pipeline.dbt_tests manual__2026-04-06T12:06:17.406679+00:00 [running]> on host 01524f5c0bbf
+[2026-04-06T13:10:59.663+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='dbt_tests' AIRFLOW_CTX_EXECUTION_DATE='2026-04-06T12:06:17.406679+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-06T12:06:17.406679+00:00'
+[2026-04-06T13:10:59.665+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-06T13:10:59.692+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-06T13:10:59.695+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/airflow/dbt_project/mon_analyse_olist && dbt test --profiles-dir .']
+[2026-04-06T13:10:59.739+0000] {subprocess.py:86} INFO - Output:
+[2026-04-06T13:11:03.946+0000] {subprocess.py:93} INFO - [0m13:11:03  Running with dbt=1.8.8
+[2026-04-06T13:11:04.855+0000] {subprocess.py:93} INFO - [0m13:11:04  Registered adapter: postgres=1.9.1
+[2026-04-06T13:11:06.552+0000] {subprocess.py:93} INFO - [0m13:11:06  [[33mWARNING[0m]: Deprecated functionality
+[2026-04-06T13:11:06.553+0000] {subprocess.py:93} INFO - The `tests` config has been renamed to `data_tests`. Please see
+[2026-04-06T13:11:06.553+0000] {subprocess.py:93} INFO - https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+[2026-04-06T13:11:06.554+0000] {subprocess.py:93} INFO - information.
+[2026-04-06T13:11:06.622+0000] {subprocess.py:93} INFO - [0m13:11:06  [[33mWARNING[0m]: Did not find matching node for patch with name 'fact_order_items' in the 'models' section of file 'models/marts/shema_marts.yml'
+[2026-04-06T13:11:06.629+0000] {subprocess.py:93} INFO - [0m13:11:06  [[33mWARNING[0m]: Did not find matching node for patch with name 'fact_orders' in the 'models' section of file 'models/marts/shema_marts.yml'
+[2026-04-06T13:11:06.996+0000] {subprocess.py:93} INFO - [0m13:11:06  [[33mWARNING[0m]: Test 'test.mon_analyse_olist.validite' (tests/validite.sql) depends on a node named 'fact_orders' in package '' which was not found
+[2026-04-06T13:11:06.997+0000] {subprocess.py:93} INFO - [0m13:11:06  [[33mWARNING[0m]: Test 'test.mon_analyse_olist.integrite' (tests/integrite.sql) depends on a node named 'fact_orders' in package '' which was not found
+[2026-04-06T13:11:06.999+0000] {subprocess.py:93} INFO - [0m13:11:06  [[33mWARNING[0m]: Test 'test.mon_analyse_olist.not_null_fact_order_items_order_id.ce02dc1e7e' (models/marts/shema_marts.yml) depends on a node named 'fact_order_items' in package '' which was not found
+[2026-04-06T13:11:07.001+0000] {subprocess.py:93} INFO - [0m13:11:07  [[33mWARNING[0m]: Test 'test.mon_analyse_olist.relationships_fact_order_items_order_id__order_id__ref_fact_orders_.499cb32e74' (models/marts/shema_marts.yml) depends on a node named 'fact_orders' in package '' which was not found
+[2026-04-06T13:11:07.003+0000] {subprocess.py:93} INFO - [0m13:11:07  [[33mWARNING[0m]: Test 'test.mon_analyse_olist.relationships_fact_order_items_order_id__order_id__ref_fact_orders_.499cb32e74' (models/marts/shema_marts.yml) depends on a node named 'fact_order_items' in package '' which was not found
+[2026-04-06T13:11:07.004+0000] {subprocess.py:93} INFO - [0m13:11:07  [[33mWARNING[0m]: Test 'test.mon_analyse_olist.not_null_fact_order_items_product_id.54f1977fe9' (models/marts/shema_marts.yml) depends on a node named 'fact_order_items' in package '' which was not found
+[2026-04-06T13:11:07.006+0000] {subprocess.py:93} INFO - [0m13:11:07  [[33mWARNING[0m]: Test 'test.mon_analyse_olist.unique_fact_orders_order_id.93a68b4064' (models/marts/shema_marts.yml) depends on a node named 'fact_orders' in package '' which was not found
+[2026-04-06T13:11:07.009+0000] {subprocess.py:93} INFO - [0m13:11:07  [[33mWARNING[0m]: Test 'test.mon_analyse_olist.not_null_fact_orders_order_id.6ba6d3f0a0' (models/marts/shema_marts.yml) depends on a node named 'fact_orders' in package '' which was not found
+[2026-04-06T13:11:07.011+0000] {subprocess.py:93} INFO - [0m13:11:07  [[33mWARNING[0m]: Test 'test.mon_analyse_olist.not_null_fact_orders_customer_id.9c2270d0dc' (models/marts/shema_marts.yml) depends on a node named 'fact_orders' in package '' which was not found
+[2026-04-06T13:11:07.013+0000] {subprocess.py:93} INFO - [0m13:11:07  [[33mWARNING[0m]: Test 'test.mon_analyse_olist.accepted_values_fact_orders_is_late__0__1.d284661ebe' (models/marts/shema_marts.yml) depends on a node named 'fact_orders' in package '' which was not found
+[2026-04-06T13:11:07.948+0000] {subprocess.py:93} INFO - [0m13:11:07  Found 14 models, 11 data tests, 9 sources, 426 macros
+[2026-04-06T13:11:07.962+0000] {subprocess.py:93} INFO - [0m13:11:07
+[2026-04-06T13:11:08.464+0000] {subprocess.py:93} INFO - [0m13:11:08  Concurrency: 4 threads (target='dev')
+[2026-04-06T13:11:08.472+0000] {subprocess.py:93} INFO - [0m13:11:08
+[2026-04-06T13:11:08.504+0000] {subprocess.py:93} INFO - [0m13:11:08  1 of 11 START test assert_no_future_orders ..................................... [RUN]
+[2026-04-06T13:11:08.506+0000] {subprocess.py:93} INFO - [0m13:11:08  2 of 11 START test assert_no_orphaned_products ................................. [RUN]
+[2026-04-06T13:11:08.509+0000] {subprocess.py:93} INFO - [0m13:11:08  3 of 11 START test assert_order_dates_logic .................................... [RUN]
+[2026-04-06T13:11:08.510+0000] {subprocess.py:93} INFO - [0m13:11:08  4 of 11 START test assert_order_financial_consistency .......................... [RUN]
+[2026-04-06T13:11:09.405+0000] {subprocess.py:93} INFO - [0m13:11:09  2 of 11 PASS assert_no_orphaned_products ....................................... [[32mPASS[0m in 0.89s]
+[2026-04-06T13:11:09.421+0000] {subprocess.py:93} INFO - [0m13:11:09  5 of 11 START test assert_positive_costs ....................................... [RUN]
+[2026-04-06T13:11:09.624+0000] {subprocess.py:93} INFO - [0m13:11:09  1 of 11 PASS assert_no_future_orders ........................................... [[32mPASS[0m in 1.11s]
+[2026-04-06T13:11:09.663+0000] {subprocess.py:93} INFO - [0m13:11:09  6 of 11 START test assert_valid_zip_code_length ................................ [RUN]
+[2026-04-06T13:11:09.890+0000] {subprocess.py:93} INFO - [0m13:11:09  3 of 11 PASS assert_order_dates_logic .......................................... [[32mPASS[0m in 1.37s]
+[2026-04-06T13:11:09.906+0000] {subprocess.py:93} INFO - [0m13:11:09  7 of 11 START test not_null_dim_customers_customer_id .......................... [RUN]
+[2026-04-06T13:11:09.992+0000] {subprocess.py:93} INFO - [0m13:11:09  5 of 11 PASS assert_positive_costs ............................................. [[32mPASS[0m in 0.56s]
+[2026-04-06T13:11:10.006+0000] {subprocess.py:93} INFO - [0m13:11:10  8 of 11 START test not_null_dim_products_category_name ......................... [RUN]
+[2026-04-06T13:11:10.127+0000] {subprocess.py:93} INFO - [0m13:11:10  6 of 11 PASS assert_valid_zip_code_length ...................................... [[32mPASS[0m in 0.45s]
+[2026-04-06T13:11:10.138+0000] {subprocess.py:93} INFO - [0m13:11:10  9 of 11 START test not_null_dim_products_product_id ............................ [RUN]
+[2026-04-06T13:11:10.253+0000] {subprocess.py:93} INFO - [0m13:11:10  7 of 11 PASS not_null_dim_customers_customer_id ................................ [[32mPASS[0m in 0.34s]
+[2026-04-06T13:11:10.277+0000] {subprocess.py:93} INFO - [0m13:11:10  10 of 11 START test unique_dim_customers_customer_id ........................... [RUN]
+[2026-04-06T13:11:10.286+0000] {subprocess.py:93} INFO - [0m13:11:10  8 of 11 PASS not_null_dim_products_category_name ............................... [[32mPASS[0m in 0.28s]
+[2026-04-06T13:11:10.331+0000] {subprocess.py:93} INFO - [0m13:11:10  11 of 11 START test unique_dim_products_product_id ............................. [RUN]
+[2026-04-06T13:11:10.460+0000] {subprocess.py:93} INFO - [0m13:11:10  9 of 11 PASS not_null_dim_products_product_id .................................. [[32mPASS[0m in 0.32s]
+[2026-04-06T13:11:10.654+0000] {subprocess.py:93} INFO - [0m13:11:10  11 of 11 PASS unique_dim_products_product_id ................................... [[32mPASS[0m in 0.30s]
+[2026-04-06T13:11:10.762+0000] {subprocess.py:93} INFO - [0m13:11:10  10 of 11 PASS unique_dim_customers_customer_id ................................. [[32mPASS[0m in 0.47s]
+[2026-04-06T13:11:11.077+0000] {subprocess.py:93} INFO - [0m13:11:11  4 of 11 FAIL 303 assert_order_financial_consistency ............................ [[31mFAIL 303[0m in 2.56s]
+[2026-04-06T13:11:11.193+0000] {subprocess.py:93} INFO - [0m13:11:11
+[2026-04-06T13:11:11.196+0000] {subprocess.py:93} INFO - [0m13:11:11  Finished running 11 data tests in 0 hours 0 minutes and 3.22 seconds (3.22s).
+[2026-04-06T13:11:11.313+0000] {subprocess.py:93} INFO - [0m13:11:11
+[2026-04-06T13:11:11.315+0000] {subprocess.py:93} INFO - [0m13:11:11  [31mCompleted with 1 error and 0 warnings:[0m
+[2026-04-06T13:11:11.318+0000] {subprocess.py:93} INFO - [0m13:11:11
+[2026-04-06T13:11:11.321+0000] {subprocess.py:93} INFO - [0m13:11:11  [31mFailure in test assert_order_financial_consistency (tests/assert_order_financial_consistency.sql)[0m
+[2026-04-06T13:11:11.326+0000] {subprocess.py:93} INFO - [0m13:11:11    Got 303 results, configured to fail if != 0
+[2026-04-06T13:11:11.329+0000] {subprocess.py:93} INFO - [0m13:11:11
+[2026-04-06T13:11:11.331+0000] {subprocess.py:93} INFO - [0m13:11:11    compiled code at target/compiled/mon_analyse_olist/tests/assert_order_financial_consistency.sql
+[2026-04-06T13:11:11.334+0000] {subprocess.py:93} INFO - [0m13:11:11
+[2026-04-06T13:11:11.340+0000] {subprocess.py:93} INFO - [0m13:11:11  Done. PASS=10 WARN=0 ERROR=1 SKIP=0 TOTAL=11
+[2026-04-06T13:11:12.949+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-04-06T13:11:12.976+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-06T13:11:13.339+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-04-06T13:11:13.381+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pipeline, task_id=dbt_tests, run_id=manual__2026-04-06T12:06:17.406679+00:00, execution_date=20260406T120617, start_date=20260406T131058, end_date=20260406T131113
+[2026-04-06T13:11:13.496+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 95 for task dbt_tests (Bash command failed. The command returned a non-zero exit code 1.; 955)
+[2026-04-06T13:11:13.544+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-04-06T13:11:13.772+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-06T13:11:13.776+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

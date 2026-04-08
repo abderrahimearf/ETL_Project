@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture Medallion & ML Insights | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --accent-purple: #a855f7;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --silver: #94a3b8;
+            --gold: #fbbf24;
+            --navbar-height: 70px;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Défilement fluide */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            padding-top: var(--navbar-height); /* Espace pour la navbar fixe */
+        }
+
+        /* --- BARRE DE NAVIGATION (NAVBAR) --- */
+        .navbar {
+            background-color: rgba(30, 41, 59, 0.95); /* Légèrement transparent */
+            backdrop-filter: blur(5px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--navbar-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            box-sizing: border-box;
+            border-bottom: 1px solid #334155;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-brand .logo-icon {
+            color: var(--accent);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .navbar-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- HEADER & CONTENEUR --- */
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid var(--accent);
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.8rem; margin: 0.5rem 0; line-height: 1.2; }
+        h2 { color: var(--accent); border-left: 4px solid var(--accent); padding-left: 1rem; margin-top: 4rem; margin-bottom: 2rem;}
+        h3 { color: var(--accent-purple); margin-top: 0; }
+
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* --- CARTES & GRILLES --- */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #334155;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* --- TABLEAUX --- */
+        .table-container {
+            overflow-x: auto; /* Pour mobile */
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #0f172a;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+        }
+
+        th {
+            color: var(--accent);
+            background-color: rgba(56, 189, 248, 0.05);
+            font-weight: 600;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        /* --- STYLES SPÉCIFIQUES --- */
+        .layer-silver { border-top: 4px solid var(--silver); }
+        .layer-gold { border-top: 4px solid var(--gold); }
+        .layer-ml { border-top: 4px solid var(--accent-purple); }
+
+        ul { list-style: none; padding-left: 0; margin: 0; }
+        ul li { margin-bottom: 10px; }
+        ul li::before {
+            content: "▹";
+            color: var(--accent);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background: #334155;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        header .tech-stack code {
+            color: var(--text-main);
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* --- SECTION CRÉATEURS --- */
+        .creators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .creator-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .creator-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .creator-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #0077b5; /* Couleur LinkedIn */
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+            margin-top: auto; /* Pousse le bouton vers le bas */
+        }
+
+        .linkedin-btn:hover {
+            background-color: #005582;
+        }
+
+        /* Icône LinkedIn simple en SVG */
+        .linkedin-icon {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-top: 1px solid #334155;
+            background-color: rgba(30, 41, 59, 0.5);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .navbar-links { display: none; } /* Cache les liens sur mobile pour simplicité */
+            .navbar { justify-content: center; }
+            .card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="#" class="navbar-brand">
+        <span class="logo-icon">&lt;/&gt;</span>
+        <span>DataEng portfolio</span>
+    </a>
+    <ul class="navbar-links">
+        <li><a href="#silver">Silver</a></li>
+        <li><a href="#gold">Gold</a></li>
+        <li><a href="#ml">ML Layer</a></li>
+        <li><a href="#quality">Qualité</a></li>
+        <li><a href="#creators">Créateurs</a></li>
+    </ul>
+</nav>
+
+<header>
+    <div class="container" style="padding: 0;">
+        <span class="badge">Projet End-to-End</span>
+        <h1>Data Engineering & ML Insights</h1>
+        <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 700px; margin: 1rem auto 0;">Architecture Medallion robuste avec orchestration, conteneurisation et transformation moderne de données pour le Machine Learning.</p>
+        <div class="tech-stack">
+            <code>Docker</code> <code>Airflow</code> <code>dbt</code> <code>PostgreSQL</code> <code>Python</code> <code>Scikit-Learn</code>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <section id="silver">
+        <h2>1. Couche Silver : Nettoyage & Standardisation</h2>
+        <div class="card layer-silver">
+            <p style="margin-top: 0;">Le passage de la couche <em>Bronze</em> à <em>Silver</em> est crucial pour transformer des données brutes en données fiables, typées et prêtes pour l'analyse.</p>
+            <div class="grid">
+                <div>
+                    <h3>Ventes & Logistique</h3>
+                    <ul>
+                        <li><strong>stg_orders :</strong> Typage des dates, gestion des vides (<code>NULLIF</code>), calcul du <code>delivery_time_days</code> et flag <code>is_late</code>.</li>
+                        <li><strong>stg_order_items :</strong> Conversion des prix/frais de port en <code>DECIMAL</code> et création de <code>total_item_value</code>.</li>
+                        <li><strong>stg_order_payments :</strong> Normalisation textuelle des modes de paiement et typage des montants.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Clients, Produits & Bio</h3>
+                    <ul>
+                        <li><strong>stg_products :</strong> Normalisation (LOWER) et gestion des manquants ('others' via <code>COALESCE</code>).</li>
+                        <li><strong>stg_customers & sellers :</strong> Nettoyage géographique (UPPER/TRIM) et standardisation des codes d'États.</li>
+                        <li><strong>stg_geolocation :</strong> Conversion des coordonnées en <code>FLOAT</code> et uniformisation des libellés de villes.</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-bottom: 0; margin-top: 1.5rem;"><em>Note transverse :</em> Utilisation systématique de <code>NULLIF(colonne, '')</code> avant chaque <code>CAST</code> pour la robustesse.</p>
+        </div>
+    </section>
+
+    <section id="gold">
+        <h2>2. Couche Gold (Marts) : Business Ready</h2>
+        <div class="card layer-gold">
+            <h3>Modélisation Dimensionnelle (Star Schema)</h3>
+            <p style="margin-top: 0;">Structuration des données selon les principes du Dimensional Modeling pour optimiser les performances de calcul et la lisibilité décisionnelle.</p>
+            <div class="grid" style="gap: 1.5rem;">
+                <div>
+                    <ul>
+                        <li><strong>Dimensions (<code>dim_</code>) :</strong> Centralisation des attributs descriptifs des Produits, Clients et Vendeurs (Sellers). Intégration systématique de la traduction des catégories.</li>
+                        <li><strong>Faits (<code>fct_</code>) :</strong> Création de tables de faits au grain de la Commande (<code>fct_orders</code>) et de l'Item (<code>fct_order_items</code>).</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><strong>Consolidation :</strong> Agrégation des paiements multiples via CTE pour éviter le <em>fan-out effect</em>.</li>
+                        <li><strong>Gouvernance :</strong> Utilisation exclusive de la fonction <code>ref()</code> pour maintenir l'intégrité du DAG dbt.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ml">
+        <h2>3. Analyse Prédictive (ML Layer)</h2>
+        <p style="margin-bottom: 2rem; color: var(--text-dim);">Exploitation directe du schéma Gold pour alimenter des modèles de Machine Learning générateurs de valeur métier.</p>
+        
+        <div class="grid">
+            <div class="card layer-ml">
+                <h3>A. Segmentation (Clustering)</h3>
+                <p><strong>Source Gold :</strong> <code>dim_customers</code> + Agrégations de faits.</p>
+                <p>Identification de profils clients via <strong>K-Means</strong> (ex: "Forts dépensiers inactifs depuis longtemps") pour des campagnes de réactivation ciblées.</p>
+            </div>
+            
+            <div class="card layer-ml">
+                <h3>B. Satisfaction (Classification)</h3>
+                <p><strong>Source Gold :</strong> <code>fct_orders</code>, <code>dim_products</code> et <code>review_score</code>.</p>
+                <p>Apprentissage supervisé pour prédire les notes de satisfaction et permettre au service client d'intervenir de manière proactive.</p>
+            </div>
+
+            <div class="card layer-ml">
+                <h3>C. Système de Recommandation</h3>
+                <p><strong>Source Gold :</strong> <code>fct_order_items</code>.</p>
+                <p>Moteur de recommandation basé sur une matrice Clients-Produits, utilisant le filtrage collaboratif pour suggérer des articles pertinents.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="quality">
+        <h2>4. Data Quality Framework</h2>
+        <div class="card">
+            <p style="margin-top: 0;">Implémentation de tests de Data Quality séparant la validation structurelle de la validation logique métier selon 5 piliers fondamentaux :</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pilier</th>
+                            <th>Application Spécifique (Olist)</th>
+                            <th>Type de Test</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Cohérence</strong> (Consistency)</td>
+                            <td>Équilibre : $Total\_Payé = Prix + Fret$</td>
+                            <td>Singular SQL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Validité</strong> (Validity)</td>
+                            <td>Chronologie : $Achat \leq Livraison$ (Contrôles de domaine)</td>
+                            <td>Singular SQL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Intégrité</strong> (Integrity)</td>
+                            <td>Absence d'enregistrements orphelins (clés étrangères dim/fct)</td>
+                            <td>Relationship</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Exactitude</strong> (Accuracy)</td>
+                            <td>Validation du format des codes postaux brésiliens (CEP)</td>
+                            <td>Singular SQL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Pertinence</strong> (Timeliness)</td>
+                            <td>Exclusion des dates aberrantes ou futures</td>
+                            <td>Singular SQL</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="creators">
+        <h2>Les Créateurs</h2>
+        <div class="creators-grid">
+            
+            <div class="card creator-card">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQHJLGK4KMQUwQ/profile-displayphoto-scale_200_200/B4DZt0f3X3IkAc-/0/1767186070795?e=1776902400&v=beta&t=ZnYeHlzD9J45w41Lq0urECp3GlJhe08JYTvJmaHcWwE" alt="Abderrahim Arfaoui" class="creator-image">
+                <div class="creator-name">Abderrahim Arfaoui</div>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Data Engineer</p>
+                <a href="https://www.linkedin.com/in/abderrahim-arfaoui-25534a2b7" target="_blank" class="linkedin-btn">
+                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+                    Profil LinkedIn
+                </a>
+            </div>
+
+            <div class="card creator-card">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQHjdWHCHzCKOA/profile-displayphoto-shrink_200_200/B4DZY6D0tzHwAk-/0/1744730804150?e=1776902400&v=beta&t=mHHwe8fmUmGWWEgvpDaANz0vgbS3Tnpcc_r4guMxrVI" alt="Ilyas Chaatouf" class="creator-image">
+                <div class="creator-name">Ilyas Chaatouf</div>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Data Engineer</p>
+                <a href="https://www.linkedin.com/in/ilyas-chaatouf-2440b8338" target="_blank" class="linkedin-btn">
+                    <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+                    Profil LinkedIn
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<div class="footer">
+    <div class="container" style="padding: 0;">
+        <p>Projet réalisé dans un environnement entièrement conteneurisé (Docker) avec orchestration Airflow pour garantir la reproductibilité et l'évolutivité du pipeline.</p>
+        <p style="margin-top: 1rem; opacity: 0.7;">&copy; 2024 - Portfolio Data Engineering & Machine Learning Architecture</p>
+    </div>
+</div>
+
+</body>
+</html>

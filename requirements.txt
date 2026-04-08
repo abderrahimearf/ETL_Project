@@ -1,0 +1,4 @@
+# Uniquement le cœur du projet
+pandas
+psycopg2-binary
+dlt[postgres]

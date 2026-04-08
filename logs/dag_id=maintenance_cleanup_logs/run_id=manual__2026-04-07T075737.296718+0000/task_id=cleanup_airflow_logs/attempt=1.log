@@ -1,0 +1,30 @@
+[2026-04-07T07:57:39.836+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-07T07:57:40.018+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: maintenance_cleanup_logs.cleanup_airflow_logs manual__2026-04-07T07:57:37.296718+00:00 [queued]>
+[2026-04-07T07:57:40.041+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: maintenance_cleanup_logs.cleanup_airflow_logs manual__2026-04-07T07:57:37.296718+00:00 [queued]>
+[2026-04-07T07:57:40.042+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-04-07T07:57:40.084+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): cleanup_airflow_logs> on 2026-04-07 07:57:37.296718+00:00
+[2026-04-07T07:57:40.098+0000] {standard_task_runner.py:64} INFO - Started process 237 to run task
+[2026-04-07T07:57:40.107+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'maintenance_cleanup_logs', 'cleanup_airflow_logs', 'manual__2026-04-07T07:57:37.296718+00:00', '--job-id', '143', '--raw', '--subdir', 'DAGS_FOLDER/maintenance_logs.py', '--cfg-path', '/tmp/tmpkgce9vj3']
+[2026-04-07T07:57:40.114+0000] {standard_task_runner.py:91} INFO - Job 143: Subtask cleanup_airflow_logs
+[2026-04-07T07:57:40.460+0000] {task_command.py:426} INFO - Running <TaskInstance: maintenance_cleanup_logs.cleanup_airflow_logs manual__2026-04-07T07:57:37.296718+00:00 [running]> on host 988cc8743556
+[2026-04-07T07:57:40.917+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='maintenance_cleanup_logs' AIRFLOW_CTX_TASK_ID='cleanup_airflow_logs' AIRFLOW_CTX_EXECUTION_DATE='2026-04-07T07:57:37.296718+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-07T07:57:37.296718+00:00'
+[2026-04-07T07:57:40.919+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-07T07:57:41.094+0000] {logging_mixin.py:188} INFO - Nettoyage : Log supprimé -> /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T09:31:02.921403+00:00/task_id=dbt_silver
+[2026-04-07T07:57:41.149+0000] {logging_mixin.py:188} INFO - Erreur lors de la suppression de /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T10:00:05.023605+00:00/task_id=ingest_csv_to_bronze: [Errno 2] No such file or directory: '/opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T10:00:05.023605+00:00/task_id=ingest_csv_to_bronze'
+[2026-04-07T07:57:41.173+0000] {logging_mixin.py:188} INFO - Nettoyage : Log supprimé -> /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T10:00:32.335470+00:00/task_id=ingest_csv_to_bronze
+[2026-04-07T07:57:41.191+0000] {logging_mixin.py:188} INFO - Nettoyage : Log supprimé -> /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T10:09:31.374303+00:00/task_id=ingest_csv_to_bronze
+[2026-04-07T07:57:41.244+0000] {logging_mixin.py:188} INFO - Erreur lors de la suppression de /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T10:59:03.094242+00:00/task_id=ingest_csv_to_bronze: [Errno 2] No such file or directory: 'attempt=1.log'
+[2026-04-07T07:57:41.275+0000] {logging_mixin.py:188} INFO - Nettoyage : Log supprimé -> /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T12:06:17.406679+00:00/task_id=ingest_csv_to_bronze
+[2026-04-07T07:57:41.290+0000] {logging_mixin.py:188} INFO - Erreur lors de la suppression de /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T13:11:05.368592+00:00/task_id=ingest_csv_to_bronze: [Errno 2] No such file or directory: 'attempt=1.log'
+[2026-04-07T07:57:41.318+0000] {logging_mixin.py:188} INFO - Erreur lors de la suppression de /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T13:56:03.417693+00:00/task_id=ingest_csv_to_bronze: [Errno 2] No such file or directory: 'attempt=1.log'
+[2026-04-07T07:57:41.350+0000] {logging_mixin.py:188} INFO - Erreur lors de la suppression de /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T14:04:35.950600+00:00/task_id=ingest_csv_to_bronze: [Errno 2] No such file or directory: 'attempt=1.log'
+[2026-04-07T07:57:41.371+0000] {logging_mixin.py:188} INFO - Nettoyage : Log supprimé -> /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T14:17:13.273560+00:00/task_id=ingest_csv_to_bronze
+[2026-04-07T07:57:41.386+0000] {logging_mixin.py:188} INFO - Erreur lors de la suppression de /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T14:18:54.080981+00:00/task_id=ingest_csv_to_bronze: [Errno 2] No such file or directory: 'attempt=1.log'
+[2026-04-07T07:57:41.402+0000] {logging_mixin.py:188} INFO - Erreur lors de la suppression de /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T14:19:55.730009+00:00/task_id=ingest_csv_to_bronze: [Errno 2] No such file or directory: 'attempt=1.log'
+[2026-04-07T07:57:41.417+0000] {logging_mixin.py:188} INFO - Erreur lors de la suppression de /opt/airflow/logs/dag_id=pipeline/run_id=manual__2026-04-06T14:20:59.961616+00:00/task_id=ingest_csv_to_bronze: [Errno 2] No such file or directory: 'attempt=1.log'
+[2026-04-07T07:57:41.473+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-04-07T07:57:41.474+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-07T07:57:41.530+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=maintenance_cleanup_logs, task_id=cleanup_airflow_logs, run_id=manual__2026-04-07T07:57:37.296718+00:00, execution_date=20260407T075737, start_date=20260407T075740, end_date=20260407T075741
+[2026-04-07T07:57:41.608+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-04-07T07:57:41.690+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-07T07:57:41.698+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

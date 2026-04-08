@@ -1,0 +1,212 @@
+[2026-04-06T09:52:36.453+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-06T09:52:36.611+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T09:52:32.793849+00:00 [queued]>
+[2026-04-06T09:52:36.633+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T09:52:32.793849+00:00 [queued]>
+[2026-04-06T09:52:36.634+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-04-06T09:52:36.657+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): ingest_csv_to_bronze> on 2026-04-06 09:52:32.793849+00:00
+[2026-04-06T09:52:36.674+0000] {standard_task_runner.py:64} INFO - Started process 1205 to run task
+[2026-04-06T09:52:36.682+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline', 'ingest_csv_to_bronze', 'manual__2026-04-06T09:52:32.793849+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpkq46hurr']
+[2026-04-06T09:52:36.692+0000] {standard_task_runner.py:91} INFO - Job 43: Subtask ingest_csv_to_bronze
+[2026-04-06T09:52:37.042+0000] {task_command.py:426} INFO - Running <TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T09:52:32.793849+00:00 [running]> on host 503d89ed3fcb
+[2026-04-06T09:52:37.507+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='ingest_csv_to_bronze' AIRFLOW_CTX_EXECUTION_DATE='2026-04-06T09:52:32.793849+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-06T09:52:32.793849+00:00'
+[2026-04-06T09:52:37.510+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-06T09:52:37.527+0000] {logging_mixin.py:188} INFO - 🚀 Lancement DLT : Injection groupée vers 'Olist'
+[2026-04-06T09:52:38.705+0000] {config_providers_context.py:146} WARNING - Airflow variable 'dlt_secrets_toml' was not found. This Airflow variable is a recommended place to hold the content of secrets.toml.If you do not use Airflow variables to hold dlt configuration or use variables with other names you can ignore this warning.
+[2026-04-06T09:52:52.765+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : customers
+[2026-04-06T09:52:52.769+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : geolocation
+[2026-04-06T09:52:52.770+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : orders
+[2026-04-06T09:52:52.771+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : order_items
+[2026-04-06T09:52:52.772+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : order_payments
+[2026-04-06T09:52:52.772+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : order_reviews
+[2026-04-06T09:52:52.773+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : products
+[2026-04-06T09:52:52.774+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : sellers
+[2026-04-06T09:52:52.774+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : product_category_translation
+[2026-04-06T09:52:52.775+0000] {logging_mixin.py:188} INFO - ⚡ Envoi de 9 tables en une seule session...
+[2026-04-06T09:55:45.587+0000] {logging_mixin.py:188} INFO - ❌ ERREUR LORS DE L'INGESTION
+[2026-04-06T09:55:45.649+0000] {logging_mixin.py:188} INFO - Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/worker.py", line 191, in _gather_metrics_and_close
+    normalizer.item_storage.close_writers(load_id, skip_flush=in_exception)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/data_item_storage.py", line 85, in close_writers
+    writer.close(skip_flush=skip_flush)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/data_writers/buffered.py", line 176, in close
+    self._flush_and_close_file(skip_flush=skip_flush)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/data_writers/buffered.py", line 260, in _flush_and_close_file
+    self._flush_items(allow_empty_file)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/data_writers/buffered.py", line 245, in _flush_items
+    self._file = self.open(self._file_name, "wt", encoding="utf-8", newline="")
+  File "/usr/local/lib/python3.10/gzip.py", line 58, in open
+    binary_file = GzipFile(filename, gz_mode, compresslevel)
+  File "/usr/local/lib/python3.10/gzip.py", line 174, in __init__
+    fileobj = self.myfileobj = builtins.open(filename, mode or 'rb')
+FileNotFoundError: [Errno 2] No such file or directory: '/home/airflow/.dlt/pipelines/olist_bulk_loader/load/new/1775469073.997717/new_jobs/sellers.a5fc6e08ba.0.insert_values'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 553, in normalize
+    runner.run_pool(normalize_step.config, normalize_step)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/runners/pool_runner.py", line 91, in run_pool
+    while _run_func():
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/runners/pool_runner.py", line 84, in _run_func
+    run_metrics = run_f.run(cast(TExecutor, pool))
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 280, in run
+    self.spool_schema_files(load_id, schema, schema_files)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 234, in spool_schema_files
+    self.spool_files(load_id, schema.clone(update_normalizers=True), map_f, files)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 166, in spool_files
+    schema_updates, writer_metrics = map_f(schema, load_id, files)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 147, in map_single
+    result = w_normalize_files(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/worker.py", line 243, in w_normalize_files
+    writer_metrics = _gather_metrics_and_close(parsed_file_name, in_exception=False)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/worker.py", line 212, in _gather_metrics_and_close
+    raise NormalizeJobFailed(load_id, job_id, str(exc), writer_metrics)
+dlt.normalize.exceptions.NormalizeJobFailed: Job for order_reviews.b1320333ba.typed-jsonl failed terminally in load 1775469073.997717 with message [Errno 2] No such file or directory: '/home/airflow/.dlt/pipelines/olist_bulk_loader/load/new/1775469073.997717/new_jobs/sellers.a5fc6e08ba.0.insert_values'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_storage.py", line 201, in get_load_package_info
+    return self.loaded_packages.get_load_package_info(load_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_package.py", line 599, in get_load_package_info
+    package_jobs = self.get_load_package_jobs(load_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_package.py", line 578, in get_load_package_jobs
+    raise LoadPackageNotFound(load_id)
+dlt.common.storages.exceptions.LoadPackageNotFound: Package with load id 1775469073.997717 could not be found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/ingestion_data.py", line 78, in load_to_postgres
+    load_info = pipeline.run(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 226, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 275, in _wrap
+    return f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 722, in run
+    self.normalize(loader_file_format=loader_file_format)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 226, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 180, in _wrap
+    rv = f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 275, in _wrap
+    return f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 556, in normalize
+    step_info = self._get_step_info(normalize_step)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 1497, in _get_step_info
+    return step.get_step_info(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 305, in get_step_info
+    load_package = self.get_load_package_info(load_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 293, in get_load_package_info
+    return self.load_storage.get_load_package_info(load_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_storage.py", line 203, in get_load_package_info
+    return self.normalized_packages.get_load_package_info(load_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_package.py", line 624, in get_load_package_info
+    all_job_infos[state] = [
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_package.py", line 625, in <listcomp>
+    self._read_job_file_info(load_id, state, job, package_created_at) for job in jobs
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_package.py", line 679, in _read_job_file_info
+    st = os.stat(full_path)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/order_items.ccee31a0cb.0.insert_values'
+[2026-04-06T09:55:45.654+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-06T09:55:45.658+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/worker.py", line 191, in _gather_metrics_and_close
+    normalizer.item_storage.close_writers(load_id, skip_flush=in_exception)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/data_item_storage.py", line 85, in close_writers
+    writer.close(skip_flush=skip_flush)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/data_writers/buffered.py", line 176, in close
+    self._flush_and_close_file(skip_flush=skip_flush)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/data_writers/buffered.py", line 260, in _flush_and_close_file
+    self._flush_items(allow_empty_file)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/data_writers/buffered.py", line 245, in _flush_items
+    self._file = self.open(self._file_name, "wt", encoding="utf-8", newline="")
+  File "/usr/local/lib/python3.10/gzip.py", line 58, in open
+    binary_file = GzipFile(filename, gz_mode, compresslevel)
+  File "/usr/local/lib/python3.10/gzip.py", line 174, in __init__
+    fileobj = self.myfileobj = builtins.open(filename, mode or 'rb')
+FileNotFoundError: [Errno 2] No such file or directory: '/home/airflow/.dlt/pipelines/olist_bulk_loader/load/new/1775469073.997717/new_jobs/sellers.a5fc6e08ba.0.insert_values'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 553, in normalize
+    runner.run_pool(normalize_step.config, normalize_step)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/runners/pool_runner.py", line 91, in run_pool
+    while _run_func():
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/runners/pool_runner.py", line 84, in _run_func
+    run_metrics = run_f.run(cast(TExecutor, pool))
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 280, in run
+    self.spool_schema_files(load_id, schema, schema_files)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 234, in spool_schema_files
+    self.spool_files(load_id, schema.clone(update_normalizers=True), map_f, files)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 166, in spool_files
+    schema_updates, writer_metrics = map_f(schema, load_id, files)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 147, in map_single
+    result = w_normalize_files(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/worker.py", line 243, in w_normalize_files
+    writer_metrics = _gather_metrics_and_close(parsed_file_name, in_exception=False)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/worker.py", line 212, in _gather_metrics_and_close
+    raise NormalizeJobFailed(load_id, job_id, str(exc), writer_metrics)
+dlt.normalize.exceptions.NormalizeJobFailed: Job for order_reviews.b1320333ba.typed-jsonl failed terminally in load 1775469073.997717 with message [Errno 2] No such file or directory: '/home/airflow/.dlt/pipelines/olist_bulk_loader/load/new/1775469073.997717/new_jobs/sellers.a5fc6e08ba.0.insert_values'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_storage.py", line 201, in get_load_package_info
+    return self.loaded_packages.get_load_package_info(load_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_package.py", line 599, in get_load_package_info
+    package_jobs = self.get_load_package_jobs(load_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_package.py", line 578, in get_load_package_jobs
+    raise LoadPackageNotFound(load_id)
+dlt.common.storages.exceptions.LoadPackageNotFound: Package with load id 1775469073.997717 could not be found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/scripts/ingestion_data.py", line 89, in load_to_postgres
+    raise e
+  File "/opt/airflow/scripts/ingestion_data.py", line 78, in load_to_postgres
+    load_info = pipeline.run(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 226, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 275, in _wrap
+    return f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 722, in run
+    self.normalize(loader_file_format=loader_file_format)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 226, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 180, in _wrap
+    rv = f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 275, in _wrap
+    return f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 556, in normalize
+    step_info = self._get_step_info(normalize_step)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 1497, in _get_step_info
+    return step.get_step_info(self)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 305, in get_step_info
+    load_package = self.get_load_package_info(load_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/normalize/normalize.py", line 293, in get_load_package_info
+    return self.load_storage.get_load_package_info(load_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_storage.py", line 203, in get_load_package_info
+    return self.normalized_packages.get_load_package_info(load_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_package.py", line 624, in get_load_package_info
+    all_job_infos[state] = [
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_package.py", line 625, in <listcomp>
+    self._read_job_file_info(load_id, state, job, package_created_at) for job in jobs
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/load_package.py", line 679, in _read_job_file_info
+    st = os.stat(full_path)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/order_items.ccee31a0cb.0.insert_values'
+[2026-04-06T09:55:46.053+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pipeline, task_id=ingest_csv_to_bronze, run_id=manual__2026-04-06T09:52:32.793849+00:00, execution_date=20260406T095232, start_date=20260406T095236, end_date=20260406T095546
+[2026-04-06T09:55:46.299+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 43 for task ingest_csv_to_bronze ([Errno 2] No such file or directory: '/home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/order_items.ccee31a0cb.0.insert_values'; 1205)
+[2026-04-06T09:55:46.448+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-04-06T09:55:46.662+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

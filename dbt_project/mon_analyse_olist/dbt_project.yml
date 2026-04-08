@@ -1,0 +1,39 @@
+# Nom du projet (doit être le même que celui utilisé dans dbt init)
+name: 'mon_analyse_olist'
+version: '1.0.0'
+config-version: 2
+
+# Indique à dbt quel profil de connexion utiliser (dans ton profiles.yml)
+profile: 'mon_analyse_olist'
+
+# Chemins des dossiers du projet
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# Dossiers à nettoyer lors de la commande 'dbt clean'
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# CONFIGURATION DES MODÈLES (La partie importante pour tes schémas)
+models:
+  mon_analyse_olist:
+    # 1. Configuration du dossier Silver (Nettoyage et Typage)
+    silver:
+      +schema: silver        # Les tables seront créées dans le schéma 'silver'
+      +materialized: view    # On utilise des Vues pour économiser l'espace SQL Server
+    
+    # 2. Configuration du dossier Gold (KPI et Business Marts)
+    marts:
+      +schema: gold          # Les tables finales seront dans le schéma 'gold'
+      +materialized: table   # On utilise des Tables physiques pour la rapidité
+
+
+
+
+
+

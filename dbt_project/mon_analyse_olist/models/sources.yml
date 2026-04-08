@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: olist
+    database: Olist
+    schema: bronze
+    tables:
+      - name: product_category_translation  # Corrigé pour matcher ton code SQL
+      - name: customers
+      - name: geolocation
+      - name: order_items
+      - name: order_payments
+      - name: order_reviews
+      - name: orders
+      - name: products
+      - name: sellers

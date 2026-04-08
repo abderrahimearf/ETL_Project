@@ -1,0 +1,12 @@
+mon_analyse_olist:
+  outputs:
+    dev:
+      type: postgres
+      host: host.docker.internal
+      port: 5432
+      user: postgres
+      password: admin
+      dbname: Olist
+      schema: silver 
+      threads: 4
+  target: dev

@@ -1,0 +1,75 @@
+[2026-04-06T14:20:23.092+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-06T14:20:23.223+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.dbt_tests manual__2026-04-06T14:19:55.730009+00:00 [queued]>
+[2026-04-06T14:20:23.251+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.dbt_tests manual__2026-04-06T14:19:55.730009+00:00 [queued]>
+[2026-04-06T14:20:23.252+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-04-06T14:20:23.306+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_tests> on 2026-04-06 14:19:55.730009+00:00
+[2026-04-06T14:20:23.323+0000] {standard_task_runner.py:64} INFO - Started process 370 to run task
+[2026-04-06T14:20:23.333+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline', 'dbt_tests', 'manual__2026-04-06T14:19:55.730009+00:00', '--job-id', '134', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmp6w0y6lu4']
+[2026-04-06T14:20:23.343+0000] {standard_task_runner.py:91} INFO - Job 134: Subtask dbt_tests
+[2026-04-06T14:20:23.731+0000] {task_command.py:426} INFO - Running <TaskInstance: pipeline.dbt_tests manual__2026-04-06T14:19:55.730009+00:00 [running]> on host 7b6c21d2cd2f
+[2026-04-06T14:20:24.156+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='dbt_tests' AIRFLOW_CTX_EXECUTION_DATE='2026-04-06T14:19:55.730009+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-06T14:19:55.730009+00:00'
+[2026-04-06T14:20:24.157+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-06T14:20:24.175+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-06T14:20:24.177+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/airflow/dbt_project/mon_analyse_olist && dbt test --profiles-dir .']
+[2026-04-06T14:20:24.200+0000] {subprocess.py:86} INFO - Output:
+[2026-04-06T14:20:29.300+0000] {subprocess.py:93} INFO - [0m14:20:29  Running with dbt=1.8.8
+[2026-04-06T14:20:29.945+0000] {subprocess.py:93} INFO - [0m14:20:29  Registered adapter: postgres=1.9.1
+[2026-04-06T14:20:31.492+0000] {subprocess.py:93} INFO - [0m14:20:31  Found 14 models, 11 data tests, 9 sources, 426 macros
+[2026-04-06T14:20:31.505+0000] {subprocess.py:93} INFO - [0m14:20:31
+[2026-04-06T14:20:32.067+0000] {subprocess.py:93} INFO - [0m14:20:32  Concurrency: 4 threads (target='dev')
+[2026-04-06T14:20:32.068+0000] {subprocess.py:93} INFO - [0m14:20:32
+[2026-04-06T14:20:32.089+0000] {subprocess.py:93} INFO - [0m14:20:32  1 of 11 START test assert_no_future_orders ..................................... [RUN]
+[2026-04-06T14:20:32.091+0000] {subprocess.py:93} INFO - [0m14:20:32  2 of 11 START test assert_no_orphaned_products ................................. [RUN]
+[2026-04-06T14:20:32.092+0000] {subprocess.py:93} INFO - [0m14:20:32  3 of 11 START test assert_order_dates_logic .................................... [RUN]
+[2026-04-06T14:20:32.093+0000] {subprocess.py:93} INFO - [0m14:20:32  4 of 11 START test assert_order_financial_consistency .......................... [RUN]
+[2026-04-06T14:20:32.631+0000] {subprocess.py:93} INFO - [0m14:20:32  2 of 11 PASS assert_no_orphaned_products ....................................... [[32mPASS[0m in 0.53s]
+[2026-04-06T14:20:32.639+0000] {subprocess.py:93} INFO - [0m14:20:32  5 of 11 START test assert_positive_costs ....................................... [RUN]
+[2026-04-06T14:20:32.844+0000] {subprocess.py:93} INFO - [0m14:20:32  1 of 11 PASS assert_no_future_orders ........................................... [[32mPASS[0m in 0.75s]
+[2026-04-06T14:20:32.854+0000] {subprocess.py:93} INFO - [0m14:20:32  6 of 11 START test assert_valid_zip_code_length ................................ [RUN]
+[2026-04-06T14:20:32.976+0000] {subprocess.py:93} INFO - [0m14:20:32  5 of 11 PASS assert_positive_costs ............................................. [[32mPASS[0m in 0.33s]
+[2026-04-06T14:20:32.987+0000] {subprocess.py:93} INFO - [0m14:20:32  7 of 11 START test not_null_dim_customers_customer_id .......................... [RUN]
+[2026-04-06T14:20:33.191+0000] {subprocess.py:93} INFO - [0m14:20:33  6 of 11 PASS assert_valid_zip_code_length ...................................... [[32mPASS[0m in 0.33s]
+[2026-04-06T14:20:33.209+0000] {subprocess.py:93} INFO - [0m14:20:33  7 of 11 PASS not_null_dim_customers_customer_id ................................ [[32mPASS[0m in 0.22s]
+[2026-04-06T14:20:33.215+0000] {subprocess.py:93} INFO - [0m14:20:33  8 of 11 START test not_null_dim_products_category_name ......................... [RUN]
+[2026-04-06T14:20:33.231+0000] {subprocess.py:93} INFO - [0m14:20:33  9 of 11 START test not_null_dim_products_product_id ............................ [RUN]
+[2026-04-06T14:20:33.341+0000] {subprocess.py:93} INFO - [0m14:20:33  3 of 11 PASS assert_order_dates_logic .......................................... [[32mPASS[0m in 1.24s]
+[2026-04-06T14:20:33.351+0000] {subprocess.py:93} INFO - [0m14:20:33  10 of 11 START test unique_dim_customers_customer_id ........................... [RUN]
+[2026-04-06T14:20:33.424+0000] {subprocess.py:93} INFO - [0m14:20:33  9 of 11 PASS not_null_dim_products_product_id .................................. [[32mPASS[0m in 0.17s]
+[2026-04-06T14:20:33.431+0000] {subprocess.py:93} INFO - [0m14:20:33  8 of 11 PASS not_null_dim_products_category_name ............................... [[32mPASS[0m in 0.21s]
+[2026-04-06T14:20:33.437+0000] {subprocess.py:93} INFO - [0m14:20:33  11 of 11 START test unique_dim_products_product_id ............................. [RUN]
+[2026-04-06T14:20:33.585+0000] {subprocess.py:93} INFO - [0m14:20:33  10 of 11 PASS unique_dim_customers_customer_id ................................. [[32mPASS[0m in 0.23s]
+[2026-04-06T14:20:33.688+0000] {subprocess.py:93} INFO - [0m14:20:33  11 of 11 PASS unique_dim_products_product_id ................................... [[32mPASS[0m in 0.25s]
+[2026-04-06T14:20:33.798+0000] {subprocess.py:93} INFO - [0m14:20:33  4 of 11 FAIL 303 assert_order_financial_consistency ............................ [[31mFAIL 303[0m in 1.70s]
+[2026-04-06T14:20:33.905+0000] {subprocess.py:93} INFO - [0m14:20:33
+[2026-04-06T14:20:33.907+0000] {subprocess.py:93} INFO - [0m14:20:33  Finished running 11 data tests in 0 hours 0 minutes and 2.40 seconds (2.40s).
+[2026-04-06T14:20:34.005+0000] {subprocess.py:93} INFO - [0m14:20:34
+[2026-04-06T14:20:34.007+0000] {subprocess.py:93} INFO - [0m14:20:34  [31mCompleted with 1 error and 0 warnings:[0m
+[2026-04-06T14:20:34.008+0000] {subprocess.py:93} INFO - [0m14:20:34
+[2026-04-06T14:20:34.010+0000] {subprocess.py:93} INFO - [0m14:20:34  [31mFailure in test assert_order_financial_consistency (tests/assert_order_financial_consistency.sql)[0m
+[2026-04-06T14:20:34.013+0000] {subprocess.py:93} INFO - [0m14:20:34    Got 303 results, configured to fail if != 0
+[2026-04-06T14:20:34.015+0000] {subprocess.py:93} INFO - [0m14:20:34
+[2026-04-06T14:20:34.017+0000] {subprocess.py:93} INFO - [0m14:20:34    compiled code at target/compiled/mon_analyse_olist/tests/assert_order_financial_consistency.sql
+[2026-04-06T14:20:34.019+0000] {subprocess.py:93} INFO - [0m14:20:34
+[2026-04-06T14:20:34.021+0000] {subprocess.py:93} INFO - [0m14:20:34  Done. PASS=10 WARN=0 ERROR=1 SKIP=0 TOTAL=11
+[2026-04-06T14:20:35.249+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-04-06T14:20:35.251+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-06T14:20:35.315+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-04-06T14:20:35.322+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pipeline, task_id=dbt_tests, run_id=manual__2026-04-06T14:19:55.730009+00:00, execution_date=20260406T141955, start_date=20260406T142023, end_date=20260406T142035
+[2026-04-06T14:20:35.333+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/utils/context.py:212 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2026-04-06T14:20:35.347+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2026-04-06T14:20:35.348+0000] {email.py:271} INFO - Email alerting: attempt 1
+[2026-04-06T14:20:36.219+0000] {email.py:282} INFO - Sent an alert email to ['abderrahimearfaoui@gmail.com']
+[2026-04-06T14:20:37.372+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 134 for task dbt_tests (Bash command failed. The command returned a non-zero exit code 1.; 370)
+[2026-04-06T14:20:37.388+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-04-06T14:20:37.461+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-06T14:20:37.464+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

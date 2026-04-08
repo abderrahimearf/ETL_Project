@@ -1,0 +1,60 @@
+[2026-04-06T10:01:19.999+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-06T10:01:20.156+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.dbt_gold manual__2026-04-06T10:00:05.023605+00:00 [queued]>
+[2026-04-06T10:01:20.186+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.dbt_gold manual__2026-04-06T10:00:05.023605+00:00 [queued]>
+[2026-04-06T10:01:20.186+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-04-06T10:01:20.226+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_gold> on 2026-04-06 10:00:05.023605+00:00
+[2026-04-06T10:01:20.245+0000] {standard_task_runner.py:64} INFO - Started process 1409 to run task
+[2026-04-06T10:01:20.251+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline', 'dbt_gold', 'manual__2026-04-06T10:00:05.023605+00:00', '--job-id', '50', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmprqeuezh2']
+[2026-04-06T10:01:20.257+0000] {standard_task_runner.py:91} INFO - Job 50: Subtask dbt_gold
+[2026-04-06T10:01:20.512+0000] {task_command.py:426} INFO - Running <TaskInstance: pipeline.dbt_gold manual__2026-04-06T10:00:05.023605+00:00 [running]> on host 503d89ed3fcb
+[2026-04-06T10:01:20.902+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='dbt_gold' AIRFLOW_CTX_EXECUTION_DATE='2026-04-06T10:00:05.023605+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-06T10:00:05.023605+00:00'
+[2026-04-06T10:01:20.904+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-06T10:01:20.922+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-06T10:01:20.923+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/airflow/dbt_project/mon_analyse_olist && dbt run --select marts --profiles-dir .']
+[2026-04-06T10:01:20.944+0000] {subprocess.py:86} INFO - Output:
+[2026-04-06T10:01:25.068+0000] {subprocess.py:93} INFO - [0m10:01:25  Running with dbt=1.8.8
+[2026-04-06T10:01:25.838+0000] {subprocess.py:93} INFO - [0m10:01:25  Registered adapter: postgres=1.9.1
+[2026-04-06T10:01:26.874+0000] {subprocess.py:93} INFO - [0m10:01:26  Found 14 models, 9 sources, 426 macros
+[2026-04-06T10:01:26.880+0000] {subprocess.py:93} INFO - [0m10:01:26
+[2026-04-06T10:01:27.442+0000] {subprocess.py:93} INFO - [0m10:01:27  Concurrency: 4 threads (target='dev')
+[2026-04-06T10:01:27.443+0000] {subprocess.py:93} INFO - [0m10:01:27
+[2026-04-06T10:01:27.460+0000] {subprocess.py:93} INFO - [0m10:01:27  1 of 5 START sql table model gold.dim_customers ................................ [RUN]
+[2026-04-06T10:01:27.462+0000] {subprocess.py:93} INFO - [0m10:01:27  2 of 5 START sql table model gold.dim_products ................................. [RUN]
+[2026-04-06T10:01:27.464+0000] {subprocess.py:93} INFO - [0m10:01:27  3 of 5 START sql table model gold.fct_order_items .............................. [RUN]
+[2026-04-06T10:01:27.465+0000] {subprocess.py:93} INFO - [0m10:01:27  4 of 5 START sql table model gold.fct_orders ................................... [RUN]
+[2026-04-06T10:01:27.941+0000] {subprocess.py:93} INFO - [0m10:01:27  2 of 5 ERROR creating sql table model gold.dim_products ........................ [[31mERROR[0m in 0.47s]
+[2026-04-06T10:01:29.607+0000] {subprocess.py:93} INFO - [0m10:01:29  1 of 5 OK created sql table model gold.dim_customers ........................... [[32mSELECT 194441[0m in 2.13s]
+[2026-04-06T10:01:33.282+0000] {subprocess.py:93} INFO - [0m10:01:33  3 of 5 OK created sql table model gold.fct_order_items ......................... [[32mSELECT 435368[0m in 5.81s]
+[2026-04-06T10:01:36.173+0000] {subprocess.py:93} INFO - [0m10:01:36  4 of 5 OK created sql table model gold.fct_orders .............................. [[32mSELECT 194441[0m in 8.70s]
+[2026-04-06T10:01:36.181+0000] {subprocess.py:93} INFO - [0m10:01:36  5 of 5 START sql table model gold.dim_customers_rfm ............................ [RUN]
+[2026-04-06T10:01:40.082+0000] {subprocess.py:93} INFO - [0m10:01:40  5 of 5 OK created sql table model gold.dim_customers_rfm ....................... [[32mSELECT 96096[0m in 3.90s]
+[2026-04-06T10:01:40.154+0000] {subprocess.py:93} INFO - [0m10:01:40
+[2026-04-06T10:01:40.156+0000] {subprocess.py:93} INFO - [0m10:01:40  Finished running 5 table models in 0 hours 0 minutes and 13.27 seconds (13.27s).
+[2026-04-06T10:01:40.288+0000] {subprocess.py:93} INFO - [0m10:01:40
+[2026-04-06T10:01:40.291+0000] {subprocess.py:93} INFO - [0m10:01:40  [31mCompleted with 1 error and 0 warnings:[0m
+[2026-04-06T10:01:40.293+0000] {subprocess.py:93} INFO - [0m10:01:40
+[2026-04-06T10:01:40.296+0000] {subprocess.py:93} INFO - [0m10:01:40    Database Error in model dim_products (models/marts/dim_products.sql)
+[2026-04-06T10:01:40.297+0000] {subprocess.py:93} INFO -   ERREUR:  la colonne t.category_name_portuguese n'existe pas
+[2026-04-06T10:01:40.298+0000] {subprocess.py:93} INFO -   LINE 21:     ON p.category_name = t.category_name_portuguese
+[2026-04-06T10:01:40.298+0000] {subprocess.py:93} INFO -                                     ^
+[2026-04-06T10:01:40.299+0000] {subprocess.py:93} INFO -   compiled code at target/run/mon_analyse_olist/models/marts/dim_products.sql
+[2026-04-06T10:01:40.300+0000] {subprocess.py:93} INFO - [0m10:01:40
+[2026-04-06T10:01:40.300+0000] {subprocess.py:93} INFO - [0m10:01:40  Done. PASS=4 WARN=0 ERROR=1 SKIP=0 TOTAL=5
+[2026-04-06T10:01:42.192+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-04-06T10:01:42.195+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-06T10:01:42.265+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-04-06T10:01:42.272+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pipeline, task_id=dbt_gold, run_id=manual__2026-04-06T10:00:05.023605+00:00, execution_date=20260406T100005, start_date=20260406T100120, end_date=20260406T100142
+[2026-04-06T10:01:42.304+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 50 for task dbt_gold (Bash command failed. The command returned a non-zero exit code 1.; 1409)
+[2026-04-06T10:01:42.346+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-04-06T10:01:42.431+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-06T10:01:42.439+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

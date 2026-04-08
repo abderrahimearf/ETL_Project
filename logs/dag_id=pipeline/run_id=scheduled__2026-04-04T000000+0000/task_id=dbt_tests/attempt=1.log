@@ -1,0 +1,118 @@
+[2026-04-06T13:55:57.869+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-06T13:55:58.147+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.dbt_tests scheduled__2026-04-04T00:00:00+00:00 [queued]>
+[2026-04-06T13:55:58.174+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.dbt_tests scheduled__2026-04-04T00:00:00+00:00 [queued]>
+[2026-04-06T13:55:58.175+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-04-06T13:55:58.209+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_tests> on 2026-04-04 00:00:00+00:00
+[2026-04-06T13:55:58.245+0000] {standard_task_runner.py:64} INFO - Started process 1540 to run task
+[2026-04-06T13:55:58.256+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline', 'dbt_tests', 'scheduled__2026-04-04T00:00:00+00:00', '--job-id', '101', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpgn7ljefr']
+[2026-04-06T13:55:58.267+0000] {standard_task_runner.py:91} INFO - Job 101: Subtask dbt_tests
+[2026-04-06T13:55:58.786+0000] {task_command.py:426} INFO - Running <TaskInstance: pipeline.dbt_tests scheduled__2026-04-04T00:00:00+00:00 [running]> on host 01524f5c0bbf
+[2026-04-06T13:55:59.520+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='dbt_tests' AIRFLOW_CTX_EXECUTION_DATE='2026-04-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-04T00:00:00+00:00'
+[2026-04-06T13:55:59.529+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-06T13:55:59.561+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-06T13:55:59.571+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/airflow/dbt_project/mon_analyse_olist && dbt test --profiles-dir .']
+[2026-04-06T13:55:59.621+0000] {subprocess.py:86} INFO - Output:
+[2026-04-06T13:56:12.841+0000] {subprocess.py:93} INFO - [0m13:56:12  Running with dbt=1.8.8
+[2026-04-06T13:56:14.155+0000] {subprocess.py:93} INFO - [0m13:56:14  Registered adapter: postgres=1.9.1
+[2026-04-06T13:56:17.793+0000] {subprocess.py:93} INFO - [0m13:56:17  Found 14 models, 11 data tests, 9 sources, 426 macros
+[2026-04-06T13:56:17.827+0000] {subprocess.py:93} INFO - [0m13:56:17
+[2026-04-06T13:56:19.629+0000] {subprocess.py:93} INFO - [0m13:56:19  Concurrency: 4 threads (target='dev')
+[2026-04-06T13:56:19.641+0000] {subprocess.py:93} INFO - [0m13:56:19
+[2026-04-06T13:56:19.757+0000] {subprocess.py:93} INFO - [0m13:56:19  1 of 11 START test assert_no_future_orders ..................................... [RUN]
+[2026-04-06T13:56:19.762+0000] {subprocess.py:93} INFO - [0m13:56:19  2 of 11 START test assert_no_orphaned_products ................................. [RUN]
+[2026-04-06T13:56:19.768+0000] {subprocess.py:93} INFO - [0m13:56:19  4 of 11 START test assert_order_financial_consistency .......................... [RUN]
+[2026-04-06T13:56:19.785+0000] {subprocess.py:93} INFO - [0m13:56:19  3 of 11 START test assert_order_dates_logic .................................... [RUN]
+[2026-04-06T13:56:22.852+0000] {subprocess.py:93} INFO - [0m13:56:22  1 of 11 PASS assert_no_future_orders ........................................... [[32mPASS[0m in 3.06s]
+[2026-04-06T13:56:22.857+0000] {subprocess.py:93} INFO - [0m13:56:22  2 of 11 PASS assert_no_orphaned_products ....................................... [[32mPASS[0m in 3.05s]
+[2026-04-06T13:56:22.877+0000] {subprocess.py:93} INFO - [0m13:56:22  5 of 11 START test assert_positive_costs ....................................... [RUN]
+[2026-04-06T13:56:22.880+0000] {subprocess.py:93} INFO - [0m13:56:22  6 of 11 START test assert_valid_zip_code_length ................................ [RUN]
+[2026-04-06T13:56:23.657+0000] {subprocess.py:93} INFO - [0m13:56:23  3 of 11 PASS assert_order_dates_logic .......................................... [[32mPASS[0m in 3.84s]
+[2026-04-06T13:56:23.715+0000] {subprocess.py:93} INFO - [0m13:56:23  7 of 11 START test not_null_dim_customers_customer_id .......................... [RUN]
+[2026-04-06T13:56:23.877+0000] {subprocess.py:93} INFO - [0m13:56:23  6 of 11 PASS assert_valid_zip_code_length ...................................... [[32mPASS[0m in 0.90s]
+[2026-04-06T13:56:23.913+0000] {subprocess.py:93} INFO - [0m13:56:23  8 of 11 START test not_null_dim_products_category_name ......................... [RUN]
+[2026-04-06T13:56:24.048+0000] {subprocess.py:93} INFO - [0m13:56:24  5 of 11 PASS assert_positive_costs ............................................. [[32mPASS[0m in 1.17s]
+[2026-04-06T13:56:24.100+0000] {subprocess.py:93} INFO - [0m13:56:24  9 of 11 START test not_null_dim_products_product_id ............................ [RUN]
+[2026-04-06T13:56:24.519+0000] {subprocess.py:93} INFO - [0m13:56:24  7 of 11 PASS not_null_dim_customers_customer_id ................................ [[32mPASS[0m in 0.78s]
+[2026-04-06T13:56:24.546+0000] {subprocess.py:93} INFO - [0m13:56:24  10 of 11 START test unique_dim_customers_customer_id ........................... [RUN]
+[2026-04-06T13:56:24.725+0000] {subprocess.py:93} INFO - [0m13:56:24  8 of 11 PASS not_null_dim_products_category_name ............................... [[32mPASS[0m in 0.81s]
+[2026-04-06T13:56:24.750+0000] {subprocess.py:93} INFO - [0m13:56:24  11 of 11 START test unique_dim_products_product_id ............................. [RUN]
+[2026-04-06T13:56:24.985+0000] {subprocess.py:93} INFO - [0m13:56:24  9 of 11 PASS not_null_dim_products_product_id .................................. [[32mPASS[0m in 0.84s]
+[2026-04-06T13:56:25.047+0000] {subprocess.py:93} INFO - [0m13:56:25  4 of 11 FAIL 303 assert_order_financial_consistency ............................ [[31mFAIL 303[0m in 5.23s]
+[2026-04-06T13:56:25.398+0000] {subprocess.py:93} INFO - [0m13:56:25  11 of 11 PASS unique_dim_products_product_id ................................... [[32mPASS[0m in 0.64s]
+[2026-04-06T13:56:25.550+0000] {subprocess.py:93} INFO - [0m13:56:25  10 of 11 PASS unique_dim_customers_customer_id ................................. [[32mPASS[0m in 0.99s]
+[2026-04-06T13:56:25.712+0000] {subprocess.py:93} INFO - [0m13:56:25
+[2026-04-06T13:56:25.715+0000] {subprocess.py:93} INFO - [0m13:56:25  Finished running 11 data tests in 0 hours 0 minutes and 7.88 seconds (7.88s).
+[2026-04-06T13:56:26.457+0000] {subprocess.py:93} INFO - [0m13:56:26
+[2026-04-06T13:56:26.463+0000] {subprocess.py:93} INFO - [0m13:56:26  [31mCompleted with 1 error and 0 warnings:[0m
+[2026-04-06T13:56:26.475+0000] {subprocess.py:93} INFO - [0m13:56:26
+[2026-04-06T13:56:26.480+0000] {subprocess.py:93} INFO - [0m13:56:26  [31mFailure in test assert_order_financial_consistency (tests/assert_order_financial_consistency.sql)[0m
+[2026-04-06T13:56:26.484+0000] {subprocess.py:93} INFO - [0m13:56:26    Got 303 results, configured to fail if != 0
+[2026-04-06T13:56:26.492+0000] {subprocess.py:93} INFO - [0m13:56:26
+[2026-04-06T13:56:26.496+0000] {subprocess.py:93} INFO - [0m13:56:26    compiled code at target/compiled/mon_analyse_olist/tests/assert_order_financial_consistency.sql
+[2026-04-06T13:56:26.499+0000] {subprocess.py:93} INFO - [0m13:56:26
+[2026-04-06T13:56:26.501+0000] {subprocess.py:93} INFO - [0m13:56:26  Done. PASS=10 WARN=0 ERROR=1 SKIP=0 TOTAL=11
+[2026-04-06T13:56:29.180+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-04-06T13:56:29.199+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-06T13:56:29.540+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-04-06T13:56:29.611+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pipeline, task_id=dbt_tests, run_id=scheduled__2026-04-04T00:00:00+00:00, execution_date=20260404T000000, start_date=20260406T135558, end_date=20260406T135629
+[2026-04-06T13:56:29.773+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/utils/context.py:212 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2026-04-06T13:56:29.887+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.10/site-packages/airflow/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2026-04-06T13:56:29.895+0000] {configuration.py:1053} WARNING - section/key [smtp/smtp_user] not found in config
+[2026-04-06T13:56:29.898+0000] {email.py:271} INFO - Email alerting: attempt 1
+[2026-04-06T13:56:29.929+0000] {taskinstance.py:1182} ERROR - Error when executing notify_dbt_failure callback
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2479, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2676, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 2701, in _execute_task
+    return _execute_task(self, context, task_orig)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 1179, in _run_finished_callback
+    callback(context)
+  File "/opt/airflow/scripts/alerts.py", line 61, in notify_dbt_failure
+    send_email(to=recipient, subject=subject, html_content=html_content)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/email.py", line 273, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/utils/email.py", line 317, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.10/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.10/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.10/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/local/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+[2026-04-06T13:56:30.101+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 101 for task dbt_tests (Bash command failed. The command returned a non-zero exit code 1.; 1540)
+[2026-04-06T13:56:30.170+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-04-06T13:56:30.351+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

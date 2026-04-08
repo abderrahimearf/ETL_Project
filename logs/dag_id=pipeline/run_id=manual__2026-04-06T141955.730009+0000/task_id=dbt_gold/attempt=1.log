@@ -1,0 +1,36 @@
+[2026-04-06T14:20:17.943+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-06T14:20:18.145+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.dbt_gold manual__2026-04-06T14:19:55.730009+00:00 [queued]>
+[2026-04-06T14:20:18.164+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.dbt_gold manual__2026-04-06T14:19:55.730009+00:00 [queued]>
+[2026-04-06T14:20:18.170+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-04-06T14:20:18.201+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_gold> on 2026-04-06 14:19:55.730009+00:00
+[2026-04-06T14:20:18.219+0000] {standard_task_runner.py:64} INFO - Started process 354 to run task
+[2026-04-06T14:20:18.233+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline', 'dbt_gold', 'manual__2026-04-06T14:19:55.730009+00:00', '--job-id', '133', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpzdhi0pqc']
+[2026-04-06T14:20:18.245+0000] {standard_task_runner.py:91} INFO - Job 133: Subtask dbt_gold
+[2026-04-06T14:20:18.635+0000] {task_command.py:426} INFO - Running <TaskInstance: pipeline.dbt_gold manual__2026-04-06T14:19:55.730009+00:00 [running]> on host 7b6c21d2cd2f
+[2026-04-06T14:20:19.246+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='dbt_gold' AIRFLOW_CTX_EXECUTION_DATE='2026-04-06T14:19:55.730009+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-06T14:19:55.730009+00:00'
+[2026-04-06T14:20:19.259+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-06T14:20:19.294+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-06T14:20:19.296+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/airflow/dbt_project/mon_analyse_olist && dbt run --select marts --profiles-dir .']
+[2026-04-06T14:20:19.339+0000] {subprocess.py:86} INFO - Output:
+[2026-04-06T14:20:24.027+0000] {subprocess.py:93} INFO - [0m14:20:24  Running with dbt=1.8.8
+[2026-04-06T14:20:24.502+0000] {subprocess.py:93} INFO - [0m14:20:24  Registered adapter: postgres=1.9.1
+[2026-04-06T14:20:25.521+0000] {subprocess.py:93} INFO - [0m14:20:25  Found 14 models, 11 data tests, 9 sources, 426 macros
+[2026-04-06T14:20:25.533+0000] {subprocess.py:93} INFO - [0m14:20:25
+[2026-04-06T14:20:26.132+0000] {subprocess.py:93} INFO - [0m14:20:26  Concurrency: 4 threads (target='dev')
+[2026-04-06T14:20:26.135+0000] {subprocess.py:93} INFO - [0m14:20:26
+[2026-04-06T14:20:26.163+0000] {subprocess.py:93} INFO - [0m14:20:26  1 of 5 START sql table model gold.dim_customers ................................ [RUN]
+[2026-04-06T14:20:26.170+0000] {subprocess.py:93} INFO - [0m14:20:26  2 of 5 START sql table model gold.dim_products ................................. [RUN]
+[2026-04-06T14:20:26.179+0000] {subprocess.py:93} INFO - [0m14:20:26  3 of 5 START sql table model gold.fct_order_items .............................. [RUN]
+[2026-04-06T14:20:26.182+0000] {subprocess.py:93} INFO - [0m14:20:26  4 of 5 START sql table model gold.fct_orders ................................... [RUN]
+[2026-04-06T14:20:27.463+0000] {subprocess.py:93} INFO - [0m14:20:27  2 of 5 OK created sql table model gold.dim_products ............................ [[32mSELECT 32951[0m in 1.26s]
+[2026-04-06T14:20:27.588+0000] {subprocess.py:93} INFO - [0m14:20:27  1 of 5 OK created sql table model gold.dim_customers ........................... [[32mSELECT 99441[0m in 1.40s]
+[2026-04-06T14:20:28.813+0000] {local_task_job_runner.py:313} WARNING - State of this instance has been externally set to success. Terminating instance.
+[2026-04-06T14:20:28.842+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-04-06T14:20:28.848+0000] {process_utils.py:132} INFO - Sending 15 to group 354. PIDs of all processes in the group: [357, 373, 354]
+[2026-04-06T14:20:28.850+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 354
+[2026-04-06T14:20:28.851+0000] {taskinstance.py:2611} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-04-06T14:20:28.852+0000] {subprocess.py:104} INFO - Sending SIGTERM signal to process group
+[2026-04-06T14:20:28.862+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-06T14:20:29.064+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=354, status='terminated', exitcode=0, started='14:20:17') (354) terminated with exit code 0
+[2026-04-06T14:20:29.067+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=373, status='terminated', started='14:20:24') (373) terminated with exit code None
+[2026-04-06T14:20:29.068+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=357, status='terminated', started='14:20:18') (357) terminated with exit code None

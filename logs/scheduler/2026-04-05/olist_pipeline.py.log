@@ -1,0 +1,57 @@
+[2026-04-05T22:37:54.806+0000] {processor.py:161} INFO - Started process (PID=163) to work on /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:37:54.826+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/olist_pipeline.py for tasks to queue
+[2026-04-05T22:37:54.905+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:37:54.904+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:38:04.319+0000] {processor.py:840} INFO - DAG(s) 'olist_end_to_end_pipeline' retrieved from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:38:04.333+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:38:04.332+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2026-04-05T22:38:04.479+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:38:04.479+0000] {dag.py:3947} INFO - Setting next_dagrun for olist_end_to_end_pipeline to 2026-04-05 00:00:00+00:00, run_after=2026-04-06 00:00:00+00:00
+[2026-04-05T22:38:04.606+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/olist_pipeline.py took 9.882 seconds
+[2026-04-05T22:38:35.135+0000] {processor.py:161} INFO - Started process (PID=184) to work on /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:38:35.138+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/olist_pipeline.py for tasks to queue
+[2026-04-05T22:38:35.142+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:38:35.141+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:38:38.003+0000] {processor.py:840} INFO - DAG(s) 'olist_end_to_end_pipeline' retrieved from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:38:38.555+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:38:38.555+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2026-04-05T22:38:38.626+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:38:38.626+0000] {dag.py:3947} INFO - Setting next_dagrun for olist_end_to_end_pipeline to 2026-04-05 00:00:00+00:00, run_after=2026-04-06 00:00:00+00:00
+[2026-04-05T22:38:38.699+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/olist_pipeline.py took 3.578 seconds
+[2026-04-05T22:39:09.496+0000] {processor.py:161} INFO - Started process (PID=196) to work on /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:39:09.499+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/olist_pipeline.py for tasks to queue
+[2026-04-05T22:39:09.512+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:39:09.510+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:39:11.898+0000] {processor.py:840} INFO - DAG(s) 'olist_end_to_end_pipeline' retrieved from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:39:11.928+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:39:11.928+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2026-04-05T22:39:11.985+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:39:11.985+0000] {dag.py:3947} INFO - Setting next_dagrun for olist_end_to_end_pipeline to 2026-04-05 00:00:00+00:00, run_after=2026-04-06 00:00:00+00:00
+[2026-04-05T22:39:12.049+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/olist_pipeline.py took 2.596 seconds
+[2026-04-05T22:39:42.518+0000] {processor.py:161} INFO - Started process (PID=208) to work on /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:39:42.525+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/olist_pipeline.py for tasks to queue
+[2026-04-05T22:39:42.546+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:39:42.544+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:39:47.621+0000] {processor.py:840} INFO - DAG(s) 'olist_end_to_end_pipeline' retrieved from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:39:47.698+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:39:47.698+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2026-04-05T22:39:47.833+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:39:47.832+0000] {dag.py:3947} INFO - Setting next_dagrun for olist_end_to_end_pipeline to 2026-04-05 00:00:00+00:00, run_after=2026-04-06 00:00:00+00:00
+[2026-04-05T22:39:47.989+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/olist_pipeline.py took 5.531 seconds
+[2026-04-05T22:40:18.595+0000] {processor.py:161} INFO - Started process (PID=224) to work on /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:40:18.598+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/olist_pipeline.py for tasks to queue
+[2026-04-05T22:40:18.603+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:40:18.603+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:40:20.899+0000] {processor.py:840} INFO - DAG(s) 'olist_end_to_end_pipeline' retrieved from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:40:20.939+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:40:20.938+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2026-04-05T22:40:20.990+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:40:20.989+0000] {dag.py:3947} INFO - Setting next_dagrun for olist_end_to_end_pipeline to 2026-04-05 00:00:00+00:00, run_after=2026-04-06 00:00:00+00:00
+[2026-04-05T22:40:21.054+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/olist_pipeline.py took 2.473 seconds
+[2026-04-05T22:40:51.395+0000] {processor.py:161} INFO - Started process (PID=236) to work on /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:40:51.398+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/olist_pipeline.py for tasks to queue
+[2026-04-05T22:40:51.403+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:40:51.403+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:40:53.475+0000] {processor.py:840} INFO - DAG(s) 'olist_end_to_end_pipeline' retrieved from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:40:53.500+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:40:53.500+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2026-04-05T22:40:53.535+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:40:53.535+0000] {dag.py:3947} INFO - Setting next_dagrun for olist_end_to_end_pipeline to 2026-04-05 00:00:00+00:00, run_after=2026-04-06 00:00:00+00:00
+[2026-04-05T22:40:53.573+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/olist_pipeline.py took 2.211 seconds
+[2026-04-05T22:41:24.258+0000] {processor.py:161} INFO - Started process (PID=248) to work on /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:41:24.267+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/olist_pipeline.py for tasks to queue
+[2026-04-05T22:41:24.280+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:41:24.279+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:41:26.267+0000] {processor.py:840} INFO - DAG(s) 'olist_end_to_end_pipeline' retrieved from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:41:26.301+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:41:26.300+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2026-04-05T22:41:26.344+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:41:26.344+0000] {dag.py:3947} INFO - Setting next_dagrun for olist_end_to_end_pipeline to 2026-04-05 00:00:00+00:00, run_after=2026-04-06 00:00:00+00:00
+[2026-04-05T22:41:26.401+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/olist_pipeline.py took 2.177 seconds
+[2026-04-05T22:41:57.124+0000] {processor.py:161} INFO - Started process (PID=260) to work on /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:41:57.126+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/olist_pipeline.py for tasks to queue
+[2026-04-05T22:41:57.132+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:41:57.131+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:41:59.744+0000] {processor.py:840} INFO - DAG(s) 'olist_end_to_end_pipeline' retrieved from /opt/airflow/dags/olist_pipeline.py
+[2026-04-05T22:41:59.928+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:41:59.928+0000] {dag.py:3089} INFO - Sync 1 DAGs
+[2026-04-05T22:41:59.947+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:41:59.946+0000] {dag.py:3111} INFO - Creating ORM DAG for olist_end_to_end_pipeline
+[2026-04-05T22:41:59.966+0000] {logging_mixin.py:188} INFO - [2026-04-05T22:41:59.966+0000] {dag.py:3947} INFO - Setting next_dagrun for olist_end_to_end_pipeline to 2026-04-04 00:00:00+00:00, run_after=2026-04-05 00:00:00+00:00
+[2026-04-05T22:42:00.028+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/olist_pipeline.py took 2.921 seconds

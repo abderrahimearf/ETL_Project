@@ -1,0 +1,12 @@
+name :
+version:
+config-version:
+
+#
+profile :
+
+models :
+   mon_analyse_olist:
+    +shema:staging
+    +materialazed : view
+  

@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  # 1. Table de faits Commandes (Ta première requête avec CTE)
+  - name: fact_orders
+    description: "Table de faits centrale regroupant les informations de commande, paiements et totaux articles."
+    columns:
+      - name: order_id
+        description: "Identifiant unique de la commande."
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Clé étrangère vers la dimension client."
+        tests:
+          - not_null
+      - name: is_late
+        description: "Indicateur de retard (1 si livré après l'estimé, sinon 0)."
+        tests:
+          - accepted_values:
+              values: [0, 1]
+
+  # 2. Table de faits Détails Articles (Ta deuxième requête)
+  - name: fact_order_items
+    description: "Détails au niveau de l'article pour chaque commande (Granularité fine)."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('fact_orders')
+              field: order_id
+      - name: product_id
+        tests:
+          - not_null
+
+  # 3. Dimension Produits (Ta troisième requête avec translation)
+  - name: dim_products
+    description: "Référentiel des produits avec catégories traduites en anglais."
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+      - name: category_name
+        description: "Nom de la catégorie (priorité à la traduction anglaise)."
+        tests:
+          - not_null
+
+  # 4. Dimension Clients (Ta quatrième requête)
+  - name: dim_customers
+    description: "Référentiel des clients."
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_unique_id
+        description: "Identifiant unique réel du client (pour suivi cross-orders)."

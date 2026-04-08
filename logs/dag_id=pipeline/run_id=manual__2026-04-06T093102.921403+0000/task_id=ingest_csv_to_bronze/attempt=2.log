@@ -1,0 +1,36 @@
+[2026-04-06T09:37:17.008+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-06T09:37:17.096+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T09:31:02.921403+00:00 [queued]>
+[2026-04-06T09:37:17.112+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T09:31:02.921403+00:00 [queued]>
+[2026-04-06T09:37:17.116+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2026-04-06T09:37:17.145+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): ingest_csv_to_bronze> on 2026-04-06 09:31:02.921403+00:00
+[2026-04-06T09:37:17.154+0000] {standard_task_runner.py:64} INFO - Started process 974 to run task
+[2026-04-06T09:37:17.161+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline', 'ingest_csv_to_bronze', 'manual__2026-04-06T09:31:02.921403+00:00', '--job-id', '34', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpcwjoxebk']
+[2026-04-06T09:37:17.170+0000] {standard_task_runner.py:91} INFO - Job 34: Subtask ingest_csv_to_bronze
+[2026-04-06T09:37:17.443+0000] {task_command.py:426} INFO - Running <TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T09:31:02.921403+00:00 [running]> on host 503d89ed3fcb
+[2026-04-06T09:37:17.824+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='ingest_csv_to_bronze' AIRFLOW_CTX_EXECUTION_DATE='2026-04-06T09:31:02.921403+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-06T09:31:02.921403+00:00'
+[2026-04-06T09:37:17.826+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-06T09:37:17.843+0000] {logging_mixin.py:188} INFO - 🚀 Lancement DLT : Injection groupée vers 'Olist'
+[2026-04-06T09:37:18.546+0000] {config_providers_context.py:146} WARNING - Airflow variable 'dlt_secrets_toml' was not found. This Airflow variable is a recommended place to hold the content of secrets.toml.If you do not use Airflow variables to hold dlt configuration or use variables with other names you can ignore this warning.
+[2026-04-06T09:37:31.087+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : customers
+[2026-04-06T09:37:31.091+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : geolocation
+[2026-04-06T09:37:31.092+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : orders
+[2026-04-06T09:37:31.093+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : order_items
+[2026-04-06T09:37:31.095+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : order_payments
+[2026-04-06T09:37:31.096+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : order_reviews
+[2026-04-06T09:37:31.097+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : products
+[2026-04-06T09:37:31.099+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : sellers
+[2026-04-06T09:37:31.100+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : product_category_translation
+[2026-04-06T09:37:31.101+0000] {logging_mixin.py:188} INFO - ⚡ Envoi de 9 tables en une seule session...
+[2026-04-06T09:41:58.613+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:41:58,611|[WARNING]|974|138528305977152|dlt|normalize.py|run:256|When normalizing package 1775468270.647122 with schema olist_bulk_loader: the storage schema hash aZefIQ+7TkEgdojw9R2Obryf+BaDZAmv3K+YF2JQoyE= is different from extract package schema hash I9oG5gAMVQOzBkkkx7PByMaB21dOHcvJj+y7kq2Hzlc=. Storage schema was used.
+[2026-04-06T09:46:02.451+0000] {logging_mixin.py:188} INFO - ✅ Ingestion terminée !
+[2026-04-06T09:46:02.497+0000] {logging_mixin.py:188} INFO - Pipeline olist_bulk_loader load step completed in 1 minute and 49.19 seconds
+2 load package(s) were loaded to destination postgres and into dataset bronze
+The postgres destination used postgresql://postgres:***@host.docker.internal:5432/Olist location to store data
+Load package 1775468263.5780532 is LOADED and contains no failed jobs
+Load package 1775468270.647122 is LOADED and contains no failed jobs
+[2026-04-06T09:46:02.511+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-04-06T09:46:02.519+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-06T09:46:02.929+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=pipeline, task_id=ingest_csv_to_bronze, run_id=manual__2026-04-06T09:31:02.921403+00:00, execution_date=20260406T093102, start_date=20260406T093717, end_date=20260406T094602
+[2026-04-06T09:46:03.293+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-04-06T09:46:03.777+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-04-06T09:46:03.782+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

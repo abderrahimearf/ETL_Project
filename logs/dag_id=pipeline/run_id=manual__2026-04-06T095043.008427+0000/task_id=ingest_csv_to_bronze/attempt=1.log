@@ -1,0 +1,294 @@
+[2026-04-06T09:50:47.155+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-06T09:50:47.265+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T09:50:43.008427+00:00 [queued]>
+[2026-04-06T09:50:47.280+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T09:50:43.008427+00:00 [queued]>
+[2026-04-06T09:50:47.280+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-04-06T09:50:47.302+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): ingest_csv_to_bronze> on 2026-04-06 09:50:43.008427+00:00
+[2026-04-06T09:50:47.313+0000] {standard_task_runner.py:64} INFO - Started process 1171 to run task
+[2026-04-06T09:50:47.319+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline', 'ingest_csv_to_bronze', 'manual__2026-04-06T09:50:43.008427+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpjhnr5go3']
+[2026-04-06T09:50:47.327+0000] {standard_task_runner.py:91} INFO - Job 38: Subtask ingest_csv_to_bronze
+[2026-04-06T09:50:47.589+0000] {task_command.py:426} INFO - Running <TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T09:50:43.008427+00:00 [running]> on host 503d89ed3fcb
+[2026-04-06T09:50:47.949+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='ingest_csv_to_bronze' AIRFLOW_CTX_EXECUTION_DATE='2026-04-06T09:50:43.008427+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-06T09:50:43.008427+00:00'
+[2026-04-06T09:50:47.951+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-06T09:50:47.967+0000] {logging_mixin.py:188} INFO - 🚀 Lancement DLT : Injection groupée vers 'Olist'
+[2026-04-06T09:50:49.081+0000] {config_providers_context.py:146} WARNING - Airflow variable 'dlt_secrets_toml' was not found. This Airflow variable is a recommended place to hold the content of secrets.toml.If you do not use Airflow variables to hold dlt configuration or use variables with other names you can ignore this warning.
+[2026-04-06T09:51:01.869+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : customers
+[2026-04-06T09:51:01.872+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : geolocation
+[2026-04-06T09:51:01.881+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : orders
+[2026-04-06T09:51:01.882+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : order_items
+[2026-04-06T09:51:01.883+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : order_payments
+[2026-04-06T09:51:01.884+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : order_reviews
+[2026-04-06T09:51:01.885+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : products
+[2026-04-06T09:51:01.885+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : sellers
+[2026-04-06T09:51:01.886+0000] {logging_mixin.py:188} INFO - 📦 Préparation de la ressource : product_category_translation
+[2026-04-06T09:51:01.887+0000] {logging_mixin.py:188} INFO - ⚡ Envoi de 9 tables en une seule session...
+[2026-04-06T09:55:20.422+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:20,382|[ERROR]|1171|138526913980096|dlt|reference.py|run_managed:441|Transient exception in job products.46281fc48e.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/products.46281fc48e.0.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:20.899+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:20,899|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for products.46281fc48e.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:21.399+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:21,393|[ERROR]|1171|138526922372800|dlt|reference.py|run_managed:441|Transient exception in job order_payments.8c97865ab0.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/order_payments.8c97865ab0.0.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:21.604+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:21,599|[ERROR]|1171|138527549494976|dlt|reference.py|run_managed:441|Transient exception in job order_reviews.beeb2d705d.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/order_reviews.beeb2d705d.0.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:21.649+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:21,635|[ERROR]|1171|138527591458496|dlt|reference.py|run_managed:441|Transient exception in job products.46281fc48e.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/products.46281fc48e.1.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:21.931+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:21,930|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for order_reviews.beeb2d705d.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:22.043+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:22,043|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for order_payments.8c97865ab0.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:22.047+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:22,047|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for products.46281fc48e.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:27.804+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:27,658|[ERROR]|1171|138527968835264|dlt|reference.py|run_managed:441|Transient exception in job customers.689a29d9a6.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/customers.689a29d9a6.0.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:28.814+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:28,812|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for customers.689a29d9a6.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:31.695+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:31,691|[ERROR]|1171|138526913980096|dlt|reference.py|run_managed:441|Transient exception in job products.46281fc48e.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/products.46281fc48e.2.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:35.339+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:35,337|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for products.46281fc48e.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:39.366+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:39,351|[ERROR]|1171|138527557887680|dlt|reference.py|run_managed:441|Transient exception in job products.46281fc48e.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/products.46281fc48e.3.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:39.832+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:39,832|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for products.46281fc48e.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:42.444+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:42,425|[ERROR]|1171|138527549494976|dlt|reference.py|run_managed:441|Transient exception in job products.46281fc48e.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/products.46281fc48e.4.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:43.143+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:43,143|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for products.46281fc48e.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:43.523+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:43,505|[ERROR]|1171|138527574673088|dlt|reference.py|run_managed:441|Transient exception in job order_payments.8c97865ab0.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/order_payments.8c97865ab0.1.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:43.676+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:43,674|[ERROR]|1171|138526905587392|dlt|reference.py|run_managed:441|Transient exception in job orders.af3ec8c125.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/orders.af3ec8c125.0.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:44.197+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:44,196|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for orders.af3ec8c125.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:44.201+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:44,201|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for order_payments.8c97865ab0.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:44.522+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:44,518|[ERROR]|1171|138528010782400|dlt|reference.py|run_managed:441|Transient exception in job order_items.ccee31a0cb.insert_values in file /home/airflow/.dlt/pipelines/olist_bulk_loader/load/normalized/1775469073.997717/started_jobs/order_items.ccee31a0cb.0.insert_values
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/destination/reference.py", line 432, in run_managed
+    self.run()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 25, in run
+    for fragments in self._insert(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/destinations/insert_job_client.py", line 51, in _insert
+    while content := f.read(self._sql_client.capabilities.max_query_length // 2):
+  File "/usr/local/lib/python3.10/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+  File "/usr/local/lib/python3.10/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+  File "/usr/local/lib/python3.10/gzip.py", line 507, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:55:45.438+0000] {logging_mixin.py:188} WARNING - 2026-04-06 09:55:45,438|[WARNING]|1171|138528305977152|dlt|load.py|complete_jobs:431|Job for order_items.ccee31a0cb.insert_values retried in load 1775469073.997717 with message Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:56:11.025+0000] {logging_mixin.py:188} INFO - ❌ ERREUR LORS DE L'INGESTION
+[2026-04-06T09:56:11.048+0000] {logging_mixin.py:188} INFO - Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 608, in load
+    runner.run_pool(load_step.config, load_step)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/runners/pool_runner.py", line 91, in run_pool
+    while _run_func():
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/runners/pool_runner.py", line 84, in _run_func
+    run_metrics = run_f.run(cast(TExecutor, pool))
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/load/load.py", line 639, in run
+    self.load_single_package(load_id, schema)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/load/load.py", line 598, in load_single_package
+    raise pending_exception
+dlt.load.exceptions.LoadClientJobRetry: Job for products.46281fc48e.insert_values had 5 retries which a multiple of 5. Exiting retry loop. You can still rerun the load package to retry this job. Last failure message was Compressed file ended before the end-of-stream marker was reached
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/ingestion_data.py", line 78, in load_to_postgres
+    load_info = pipeline.run(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 226, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 275, in _wrap
+    return f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 747, in run
+    return self.load(destination, dataset_name, credentials=credentials)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 226, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 166, in _wrap
+    return f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 275, in _wrap
+    return f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 615, in load
+    raise PipelineStepFailed(
+dlt.pipeline.exceptions.PipelineStepFailed: Pipeline execution failed at stage load when processing package 1775469073.997717 with exception:
+
+<class 'dlt.load.exceptions.LoadClientJobRetry'>
+Job for products.46281fc48e.insert_values had 5 retries which a multiple of 5. Exiting retry loop. You can still rerun the load package to retry this job. Last failure message was Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:56:11.057+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-06T09:56:11.115+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 608, in load
+    runner.run_pool(load_step.config, load_step)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/runners/pool_runner.py", line 91, in run_pool
+    while _run_func():
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/runners/pool_runner.py", line 84, in _run_func
+    run_metrics = run_f.run(cast(TExecutor, pool))
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/load/load.py", line 639, in run
+    self.load_single_package(load_id, schema)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/load/load.py", line 598, in load_single_package
+    raise pending_exception
+dlt.load.exceptions.LoadClientJobRetry: Job for products.46281fc48e.insert_values had 5 retries which a multiple of 5. Exiting retry loop. You can still rerun the load package to retry this job. Last failure message was Compressed file ended before the end-of-stream marker was reached
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/scripts/ingestion_data.py", line 89, in load_to_postgres
+    raise e
+  File "/opt/airflow/scripts/ingestion_data.py", line 78, in load_to_postgres
+    load_info = pipeline.run(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 226, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 275, in _wrap
+    return f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 747, in run
+    return self.load(destination, dataset_name, credentials=credentials)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 226, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 166, in _wrap
+    return f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 275, in _wrap
+    return f(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 615, in load
+    raise PipelineStepFailed(
+dlt.pipeline.exceptions.PipelineStepFailed: Pipeline execution failed at stage load when processing package 1775469073.997717 with exception:
+
+<class 'dlt.load.exceptions.LoadClientJobRetry'>
+Job for products.46281fc48e.insert_values had 5 retries which a multiple of 5. Exiting retry loop. You can still rerun the load package to retry this job. Last failure message was Compressed file ended before the end-of-stream marker was reached
+[2026-04-06T09:56:11.357+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pipeline, task_id=ingest_csv_to_bronze, run_id=manual__2026-04-06T09:50:43.008427+00:00, execution_date=20260406T095043, start_date=20260406T095047, end_date=20260406T095611
+[2026-04-06T09:56:11.548+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 38 for task ingest_csv_to_bronze (Pipeline execution failed at stage load when processing package 1775469073.997717 with exception:
+
+<class 'dlt.load.exceptions.LoadClientJobRetry'>
+Job for products.46281fc48e.insert_values had 5 retries which a multiple of 5. Exiting retry loop. You can still rerun the load package to retry this job. Last failure message was Compressed file ended before the end-of-stream marker was reached; 1171)
+[2026-04-06T09:56:11.783+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-04-06T09:56:12.094+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-06T09:56:12.123+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

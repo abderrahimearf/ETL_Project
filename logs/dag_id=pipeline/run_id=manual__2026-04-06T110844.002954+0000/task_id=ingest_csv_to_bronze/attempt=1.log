@@ -1,0 +1,82 @@
+[2026-04-06T11:08:54.477+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-06T11:08:54.950+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T11:08:44.002954+00:00 [queued]>
+[2026-04-06T11:08:55.033+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T11:08:44.002954+00:00 [queued]>
+[2026-04-06T11:08:55.035+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-04-06T11:08:55.175+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): ingest_csv_to_bronze> on 2026-04-06 11:08:44.002954+00:00
+[2026-04-06T11:08:55.216+0000] {standard_task_runner.py:64} INFO - Started process 2505 to run task
+[2026-04-06T11:08:55.246+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline', 'ingest_csv_to_bronze', 'manual__2026-04-06T11:08:44.002954+00:00', '--job-id', '86', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmp06pdhmkl']
+[2026-04-06T11:08:55.265+0000] {standard_task_runner.py:91} INFO - Job 86: Subtask ingest_csv_to_bronze
+[2026-04-06T11:08:56.404+0000] {task_command.py:426} INFO - Running <TaskInstance: pipeline.ingest_csv_to_bronze manual__2026-04-06T11:08:44.002954+00:00 [running]> on host 503d89ed3fcb
+[2026-04-06T11:08:58.950+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='ingest_csv_to_bronze' AIRFLOW_CTX_EXECUTION_DATE='2026-04-06T11:08:44.002954+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-06T11:08:44.002954+00:00'
+[2026-04-06T11:08:59.036+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-06T11:08:59.428+0000] {logging_mixin.py:188} INFO - 🚀 Lancement DLT : Injection groupée vers 'Olist'
+[2026-04-06T11:08:59.510+0000] {logging_mixin.py:188} INFO - 🆔 Run ID         : manual__2026-04-06T11_08_44.002954_plus_00_00
+[2026-04-06T11:08:59.525+0000] {logging_mixin.py:188} INFO - 🧱 Pipeline name  : olist_bulk_loader_manual__2026-04-06T11_08_44.002954_plus_00_00
+[2026-04-06T11:08:59.552+0000] {logging_mixin.py:188} INFO - 📁 DLT_DATA_DIR   : /tmp/dlt_manual__2026-04-06T11_08_44.002954_plus_00_00
+[2026-04-06T11:08:59.559+0000] {logging_mixin.py:188} INFO - 🗃️ Schéma cible   : bronze
+[2026-04-06T11:09:06.957+0000] {config_providers_context.py:146} WARNING - Airflow variable 'dlt_secrets_toml' was not found. This Airflow variable is a recommended place to hold the content of secrets.toml.If you do not use Airflow variables to hold dlt configuration or use variables with other names you can ignore this warning.
+[2026-04-06T11:09:22.594+0000] {logging_mixin.py:188} INFO - ❌ ERREUR LORS DE L'INGESTION
+[2026-04-06T11:09:22.614+0000] {logging_mixin.py:188} INFO - Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 1328, in _validate_pipeline_name
+    FileStorage.validate_file_name_component(self.pipeline_name)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/file_storage.py", line 296, in validate_file_name_component
+    raise pathvalidate.error.InvalidCharError(
+pathvalidate.error.InvalidCharError: [PV1100] invalid characters found: description=Component name cannot contain the following characters: . % { }
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/scripts/ingestion_data.py", line 117, in load_to_postgres
+    pipeline = dlt.pipeline(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/configuration/inject.py", line 247, in _wrap
+    return f(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/__init__.py", line 154, in pipeline
+    p = _impl_cls(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 365, in __init__
+    self._init_working_dir(pipeline_name, pipelines_dir)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 1135, in _init_working_dir
+    self._validate_pipeline_name()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 1330, in _validate_pipeline_name
+    raise InvalidPipelineName(self.pipeline_name, str(ve_ex))
+dlt.pipeline.exceptions.InvalidPipelineName: The pipeline name olist_bulk_loader_manual__2026-04-06T11_08_44.002954_plus_00_00 contains invalid characters. The pipeline name is used to create a pipeline working directory and must be a valid directory name. The actual error is: [PV1100] invalid characters found: description=Component name cannot contain the following characters: . % { }
+[2026-04-06T11:09:22.618+0000] {logging_mixin.py:188} INFO - 🧹 Workspace temporaire supprimé : /tmp/dlt_manual__2026-04-06T11_08_44.002954_plus_00_00
+[2026-04-06T11:09:22.621+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-06T11:09:22.635+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 1328, in _validate_pipeline_name
+    FileStorage.validate_file_name_component(self.pipeline_name)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/storages/file_storage.py", line 296, in validate_file_name_component
+    raise pathvalidate.error.InvalidCharError(
+pathvalidate.error.InvalidCharError: [PV1100] invalid characters found: description=Component name cannot contain the following characters: . % { }
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/scripts/ingestion_data.py", line 117, in load_to_postgres
+    pipeline = dlt.pipeline(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/common/configuration/inject.py", line 247, in _wrap
+    return f(*bound_args.args, **bound_args.kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/__init__.py", line 154, in pipeline
+    p = _impl_cls(
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 365, in __init__
+    self._init_working_dir(pipeline_name, pipelines_dir)
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 1135, in _init_working_dir
+    self._validate_pipeline_name()
+  File "/home/airflow/.local/lib/python3.10/site-packages/dlt/pipeline/pipeline.py", line 1330, in _validate_pipeline_name
+    raise InvalidPipelineName(self.pipeline_name, str(ve_ex))
+dlt.pipeline.exceptions.InvalidPipelineName: The pipeline name olist_bulk_loader_manual__2026-04-06T11_08_44.002954_plus_00_00 contains invalid characters. The pipeline name is used to create a pipeline working directory and must be a valid directory name. The actual error is: [PV1100] invalid characters found: description=Component name cannot contain the following characters: . % { }
+[2026-04-06T11:09:22.768+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pipeline, task_id=ingest_csv_to_bronze, run_id=manual__2026-04-06T11:08:44.002954+00:00, execution_date=20260406T110844, start_date=20260406T110854, end_date=20260406T110922
+[2026-04-06T11:09:22.905+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 86 for task ingest_csv_to_bronze (The pipeline name olist_bulk_loader_manual__2026-04-06T11_08_44.002954_plus_00_00 contains invalid characters. The pipeline name is used to create a pipeline working directory and must be a valid directory name. The actual error is: [PV1100] invalid characters found: description=Component name cannot contain the following characters: . % { }; 2505)
+[2026-04-06T11:09:22.990+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-04-06T11:09:23.302+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-06T11:09:23.366+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

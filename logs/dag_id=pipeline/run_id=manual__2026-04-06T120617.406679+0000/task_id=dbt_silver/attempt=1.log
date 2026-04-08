@@ -1,0 +1,50 @@
+[2026-04-06T12:11:12.275+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-06T12:11:12.381+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pipeline.dbt_silver manual__2026-04-06T12:06:17.406679+00:00 [queued]>
+[2026-04-06T12:11:12.407+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pipeline.dbt_silver manual__2026-04-06T12:06:17.406679+00:00 [queued]>
+[2026-04-06T12:11:12.408+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-04-06T12:11:12.430+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_silver> on 2026-04-06 12:06:17.406679+00:00
+[2026-04-06T12:11:12.441+0000] {standard_task_runner.py:64} INFO - Started process 245 to run task
+[2026-04-06T12:11:12.456+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pipeline', 'dbt_silver', 'manual__2026-04-06T12:06:17.406679+00:00', '--job-id', '92', '--raw', '--subdir', 'DAGS_FOLDER/pipeline.py', '--cfg-path', '/tmp/tmpvmpty4ad']
+[2026-04-06T12:11:12.470+0000] {standard_task_runner.py:91} INFO - Job 92: Subtask dbt_silver
+[2026-04-06T12:11:12.720+0000] {task_command.py:426} INFO - Running <TaskInstance: pipeline.dbt_silver manual__2026-04-06T12:06:17.406679+00:00 [running]> on host 01524f5c0bbf
+[2026-04-06T12:11:13.345+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineer' AIRFLOW_CTX_DAG_ID='pipeline' AIRFLOW_CTX_TASK_ID='dbt_silver' AIRFLOW_CTX_EXECUTION_DATE='2026-04-06T12:06:17.406679+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-06T12:06:17.406679+00:00'
+[2026-04-06T12:11:13.347+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-06T12:11:13.373+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-06T12:11:13.375+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/airflow/dbt_project/mon_analyse_olist && dbt run --select silver --profiles-dir .']
+[2026-04-06T12:11:13.395+0000] {subprocess.py:86} INFO - Output:
+[2026-04-06T12:11:18.384+0000] {subprocess.py:93} INFO - [0m12:11:18  Running with dbt=1.8.8
+[2026-04-06T12:11:19.067+0000] {subprocess.py:93} INFO - [0m12:11:19  Registered adapter: postgres=1.9.1
+[2026-04-06T12:11:20.361+0000] {subprocess.py:93} INFO - [0m12:11:20  Found 14 models, 9 sources, 426 macros
+[2026-04-06T12:11:20.368+0000] {subprocess.py:93} INFO - [0m12:11:20
+[2026-04-06T12:11:20.980+0000] {subprocess.py:93} INFO - [0m12:11:20  Concurrency: 4 threads (target='dev')
+[2026-04-06T12:11:20.981+0000] {subprocess.py:93} INFO - [0m12:11:20
+[2026-04-06T12:11:21.004+0000] {subprocess.py:93} INFO - [0m12:11:21  1 of 9 START sql view model silver.stg_category_translation .................... [RUN]
+[2026-04-06T12:11:21.007+0000] {subprocess.py:93} INFO - [0m12:11:21  2 of 9 START sql view model silver.stg_customers ............................... [RUN]
+[2026-04-06T12:11:21.009+0000] {subprocess.py:93} INFO - [0m12:11:21  3 of 9 START sql view model silver.stg_geolocation ............................. [RUN]
+[2026-04-06T12:11:21.012+0000] {subprocess.py:93} INFO - [0m12:11:21  4 of 9 START sql view model silver.stg_order_items ............................. [RUN]
+[2026-04-06T12:11:21.681+0000] {subprocess.py:93} INFO - [0m12:11:21  2 of 9 OK created sql view model silver.stg_customers .......................... [[32mCREATE VIEW[0m in 0.65s]
+[2026-04-06T12:11:21.683+0000] {subprocess.py:93} INFO - [0m12:11:21  1 of 9 OK created sql view model silver.stg_category_translation ............... [[32mCREATE VIEW[0m in 0.66s]
+[2026-04-06T12:11:21.685+0000] {subprocess.py:93} INFO - [0m12:11:21  3 of 9 OK created sql view model silver.stg_geolocation ........................ [[32mCREATE VIEW[0m in 0.66s]
+[2026-04-06T12:11:21.687+0000] {subprocess.py:93} INFO - [0m12:11:21  4 of 9 OK created sql view model silver.stg_order_items ........................ [[32mCREATE VIEW[0m in 0.66s]
+[2026-04-06T12:11:21.702+0000] {subprocess.py:93} INFO - [0m12:11:21  5 of 9 START sql view model silver.stg_order_payments .......................... [RUN]
+[2026-04-06T12:11:21.703+0000] {subprocess.py:93} INFO - [0m12:11:21  6 of 9 START sql view model silver.stg_order_reviews ........................... [RUN]
+[2026-04-06T12:11:21.705+0000] {subprocess.py:93} INFO - [0m12:11:21  7 of 9 START sql view model silver.stg_orders .................................. [RUN]
+[2026-04-06T12:11:21.706+0000] {subprocess.py:93} INFO - [0m12:11:21  8 of 9 START sql view model silver.stg_products ................................ [RUN]
+[2026-04-06T12:11:22.142+0000] {subprocess.py:93} INFO - [0m12:11:22  6 of 9 OK created sql view model silver.stg_order_reviews ...................... [[32mCREATE VIEW[0m in 0.41s]
+[2026-04-06T12:11:22.202+0000] {subprocess.py:93} INFO - [0m12:11:22  9 of 9 START sql view model silver.stg_sellers ................................. [RUN]
+[2026-04-06T12:11:22.259+0000] {subprocess.py:93} INFO - [0m12:11:22  8 of 9 OK created sql view model silver.stg_products ........................... [[32mCREATE VIEW[0m in 0.53s]
+[2026-04-06T12:11:22.262+0000] {subprocess.py:93} INFO - [0m12:11:22  7 of 9 OK created sql view model silver.stg_orders ............................. [[32mCREATE VIEW[0m in 0.54s]
+[2026-04-06T12:11:22.264+0000] {subprocess.py:93} INFO - [0m12:11:22  5 of 9 OK created sql view model silver.stg_order_payments ..................... [[32mCREATE VIEW[0m in 0.55s]
+[2026-04-06T12:11:22.455+0000] {subprocess.py:93} INFO - [0m12:11:22  9 of 9 OK created sql view model silver.stg_sellers ............................ [[32mCREATE VIEW[0m in 0.24s]
+[2026-04-06T12:11:22.542+0000] {subprocess.py:93} INFO - [0m12:11:22
+[2026-04-06T12:11:22.544+0000] {subprocess.py:93} INFO - [0m12:11:22  Finished running 9 view models in 0 hours 0 minutes and 2.17 seconds (2.17s).
+[2026-04-06T12:11:22.645+0000] {subprocess.py:93} INFO - [0m12:11:22
+[2026-04-06T12:11:22.648+0000] {subprocess.py:93} INFO - [0m12:11:22  [32mCompleted successfully[0m
+[2026-04-06T12:11:22.650+0000] {subprocess.py:93} INFO - [0m12:11:22
+[2026-04-06T12:11:22.654+0000] {subprocess.py:93} INFO - [0m12:11:22  Done. PASS=9 WARN=0 ERROR=0 SKIP=0 TOTAL=9
+[2026-04-06T12:11:31.139+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-04-06T12:11:31.142+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-06T12:11:31.341+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=pipeline, task_id=dbt_silver, run_id=manual__2026-04-06T12:06:17.406679+00:00, execution_date=20260406T120617, start_date=20260406T121112, end_date=20260406T121131
+[2026-04-06T12:11:31.412+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-04-06T12:11:31.512+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-04-06T12:11:31.516+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

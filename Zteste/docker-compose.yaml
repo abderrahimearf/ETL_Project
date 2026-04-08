@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  # 1. Le Webserver
+  airflow-webserver:
+    build: .
+    container_name: airflow_webserver
+    environment: &airflow_env
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:admin@host.docker.internal:5432/airflow_db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - PYTHONPATH=/opt/airflow
+      # --- CONFIGURATION EMAIL SMTP ---
+      - AIRFLOW__SMTP__SMTP_HOST=smtp.gmail.com
+      - AIRFLOW__SMTP__SMTP_USER=arfaouiabderrahim061@gmail.com
+      - AIRFLOW__SMTP__SMTP_PASSWORD=zazl hfly kxyt xayg # <--- Ton code 16 caractères ici
+      - AIRFLOW__SMTP__SMTP_PORT=587
+      - AIRFLOW__SMTP__SMTP_MAIL_FROM=arfaouiabderrahim061@gmail.com
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./scripts:/opt/airflow/scripts
+      - ./data:/opt/airflow/data
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ./dbt_project:/opt/airflow/dbt_project
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: >
+      bash -c "
+      airflow db migrate &&
+      airflow users create --username admin --firstname admin --lastname admin --role Admin --email admin@example.com --password admin || true &&
+      airflow webserver
+      "
+
+  # 2. Le Scheduler
+  airflow-scheduler:
+    build: .
+    container_name: airflow_scheduler
+    environment: *airflow_env # Récupère automatiquement toutes les variables ci-dessus
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./scripts:/opt/airflow/scripts
+      - ./data:/opt/airflow/data
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ./dbt_project:/opt/airflow/dbt_project
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: airflow scheduler
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+docker compose up -d
+
+http://localhost:8080
+
+docker compose exec airflow airflow users reset-password --username admin
+
+tr3@-RealMadrid163tr_5
+
+dbt init mon_analyse_olist
+
+modeles : sortie d'un fichier .sql (Sous dossier staging,marts)
+
+principe DRY (Don’t Repeat Yourself)
+
+
+What’s the underlying reason for this decision? sous-jacent produits underling product C’est le système qui tourne “en dessous” de ce que tu utilises
+
+https://spring.lightning.force.com/lightning/page/home
+
+partercomunity
+thrailhead
+agentblazer
+
+https://trailhead.salesforce.com/fr/today
+https://focusonforce.com/login/
+https://trailhead.salesforce.com/fr/content/learn/modules/the-einstein-trust-layer/meet-the-einstein-trust-layer?trail_id=become-an-agentblazer-champion-2026
+
+
+
+
+Azure Synapse Analytics
+adls
+https://codesignal.com/learn/paths/introduction-to-pyspark?utm_campaign=classcentral-courses_Q4_25_&utm_medium=referral&utm_source=classcentral&utm_content=go-to-class
+
+
+
+
+
+
+docker exec -it airflow_olist airflow users reset-password --username admin --password admin
+
+
+
+Entrer dans le contenuer : docker exec -it airflow_olist bash
+
+
+
+
+
+
+docker logs -f logstash
